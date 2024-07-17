@@ -99,8 +99,14 @@ in
     xdgOpenUsePortal = true;
   };
 
+    xdg.configFile."hypr/monitors.conf".text = ''
+      # Default monitor configuration
+      monitor=,preferred,auto,1
+    '';
+
   wayland.windowManager.hyprland = {
     enable = true;
+
     extraConfig = (builtins.readFile ./hyprland.conf) + ''
       bind=SUPER,P,exec,${lib.exe pkgs.wofi} --show run --style=${./wofi.css} --term=footclient --prompt=Run
       bind=SUPER,A,exec,${gblast} save area

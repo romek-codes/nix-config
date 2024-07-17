@@ -4,7 +4,7 @@
   imports = [
     # Hardware scan
     ./hardware-configuration.nix
-    ../../wm/xmonad.nix
+    ../../wm/hyprland.nix
   ];
 
   boot = {
@@ -21,15 +21,10 @@
 
   networking = {
     hostName = "tongfang-amd";
-    interfaces = {
-      eno1.useDHCP = true;
-      wlp1s0.useDHCP = true;
-    };
-  };
-
-  fileSystems."/data" = {
-    device = "/dev/nvme0n1p3";
-    fsType = "ext4";
+  #  interfaces = {
+  #    eno1.useDHCP = true;
+  #    wlp1s0.useDHCP = true;
+  #  };
   };
 
   services.sysprof.enable = true;
@@ -42,7 +37,7 @@
         output = "HDMI-A-0";
         primary = true;
         monitorConfig = ''
-          Modeline "3840x2160_30.00"  338.75  3840 4080 4488 5136  2160 2163 2168 2200 -hsync +vsync
+          Modeline "1920x1080_30.00"  338.75  3840 4080 4488 5136  2160 2163 2168 2200 -hsync +vsync
           Option "PreferredMode" "3840x2160_30.00"
           Option "Position" "0 0"
         '';

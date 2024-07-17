@@ -9,6 +9,6 @@
       inputs.neovim-flake.homeManagerModules.${system}.default
     ];
 
-    users.gvolpe = import ../home/wm/xmonad/home.nix;
+    users.romek = import ../home/wm/xmonad/home.nix;
   };
 }
