@@ -34,18 +34,14 @@ rebuild_hyprland_hdmi() {
   activate_hm
 }
 
-rebuild_thinkpad() {
-  sudo nixos-rebuild switch --flake .#thinkpad
-}
-
-rebuild_tongfang() {
-  # nix build .#nixosConfigurations.tongfang-amd.config.system.build.toplevel
+rebuild_lenovo() {
+  # nix build .#nixosConfigurations.lenovo-yoga.config.system.build.toplevel
   # sudo result/bin/switch-to-configuration switch
-  sudo nixos-rebuild switch --flake .#tongfang-amd
+  sudo nixos-rebuild switch --flake .#lenovo-yoga
 }
 
-rebuild_tongfang_vm() {
-  nixos-rebuild build-vm --flake .#tongfang-amd
+rebuild_lenovo_vm() {
+  nixos-rebuild build-vm --flake .#lenovo-yoga
 }
 
 restart_X() {
@@ -102,12 +98,10 @@ case $1 in
     restart_X;;
   "update-fish")
     fish -c fish_update_completions;;
-  "thinkpad")
-    rebuild_thinkpad;;
-  "tongfang")
-    rebuild_tongfang;;
+  "lenovo")
+    rebuild_lenovo;;
   "vm")
-    rebuild_tongfang_vm;;
+    rebuild_lenovo_vm;;
   *)
     echo "Wrong argument: look at the switch script.";;
 esac

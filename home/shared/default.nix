@@ -17,7 +17,7 @@ let
     fd # "find" for files
     gimp # gnu image manipulation program
     hyperfine # command-line benchmarking tool
-    insomnia # rest client with graphql support
+    bruno # rest client
     jmtpfs # mount mtp devices
     killall # kill processes by name
     libreoffice # office suite
@@ -29,11 +29,14 @@ let
     ranger # terminal file explorer
     ripgrep # fast grep
     screenkey # shows keypresses on screen
-    spotify # music player
+    spotube # music player
     tdesktop # telegram messaging client
     tree # display files in a tree view
     vlc # media player
     xsel # clipboard support (also for neovim)
+    tmux # terminal multiplexer
+    lunarvim # current nvim distro i'm using
+    lazygit # my preferred way of interacting with git (i'm lazy)
   ];
 in
 {
@@ -58,7 +61,7 @@ in
     sessionVariables = {
       BROWSER = "${lib.exe pkgs.firefox-beta-bin}";
       DISPLAY = ":0";
-      EDITOR = "nvim";
+      EDITOR = "lvim";
       # https://github.com/NixOS/nixpkgs/issues/24311#issuecomment-980477051
       GIT_ASKPASS = "";
     };

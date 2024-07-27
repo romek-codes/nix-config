@@ -6,8 +6,8 @@ let
   inherit (nixpkgs.lib) nixosSystem;
   inherit (pkgs) lib;
 
-  tongfangModules = [
-    ../system/machine/tongfang-amd
+  lenovoModules = [
+    ../system/machine/lenovo-yoga
     ../system/configuration.nix
     extraSystemConfig
   ];
@@ -23,27 +23,17 @@ in
     ];
   };
 
-  thinkpad = nixosSystem {
+  lenovo-yoga = nixosSystem {
     inherit lib pkgs system;
     specialArgs = { inherit inputs; };
-    modules = [
-      ../system/machine/thinkpad-x1
-      ../system/configuration.nix
-      extraSystemConfig
-    ];
-  };
-
-  tongfang-amd = nixosSystem {
-    inherit lib pkgs system;
-    specialArgs = { inherit inputs; };
-    modules = tongfangModules;
+    modules = lenovoModules;
   };
 
   # FIXME: zfs-kernel-2.2.3-6.8.9 is marked as broken
-  #edp-tongfang-amd = nixosSystem {
+  #edp-lenovo-yoga = nixosSystem {
   #inherit lib pkgs system;
   #specialArgs = { inherit inputs; };
-  #modules = tongfangModules ++ [
+  #modules = lenovoModules ++ [
   ## edp modules
   #home-manager.nixosModules.home-manager
   #(import ./mod.nix {

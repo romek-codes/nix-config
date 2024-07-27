@@ -49,6 +49,10 @@ in
     nix-schema
     vim
     wget
+    gcc
+    rustc
+    cargo
+    nil
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -126,6 +130,8 @@ in
       enable = true;
       drivers = [ pkgs.epson-escpr ];
     };
+
+    logind.lidSwitch = "hibernate";
   };
 
   # Making fonts accessible to applications.

@@ -46,8 +46,8 @@ gpg --export-secret-keys 0x121D4302A64B2261 > private-key
 ```console
 $ scp USER@HOST:/path/to/private-key .
 # for example
-scp gvolpe@tongfang-amd:/home/gvolpe/workspace/private-key .
-(gvolpe@tongfang-amd) Password:
+scp gvolpe@lenovo-yoga:/home/gvolpe/workspace/private-key .
+(gvolpe@lenovo-yoga) Password:
 ```
 
 3. Import private GPG key on the new machine.

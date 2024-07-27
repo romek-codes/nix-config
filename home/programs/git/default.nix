@@ -3,7 +3,7 @@
 let
   gitConfig = {
     core = {
-      editor = "nvim";
+      editor = "lvim";
       pager = "diff-so-fancy | less --tabs=4 -RFX";
     };
     init.defaultBranch = "main";
@@ -14,7 +14,7 @@ let
     mergetool."vim_mergetool" = {
       #cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\"";
       # this command requires the vim-mergetool plugin
-      cmd = "nvim -f -c \"MergetoolStart\" \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"";
+      cmd = "lvim -f -c \"MergetoolStart\" \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"";
       prompt = false;
     };
     pull.rebase = false;
@@ -69,10 +69,10 @@ in
       "*.jvmopts" # should be local to every project
     ];
     signing = {
-      key = "121D4302A64B2261";
+      key = "99B1E21248E65ACE";
       signByDefault = true;
     };
-    userEmail = "volpegabriel@gmail.com";
-    userName = "Gabriel Volpe";
+    userEmail = "romanjuszczyk@tuta.io";
+    userName = "romek";
   } // (pkgs.sxm.git or { });
 }

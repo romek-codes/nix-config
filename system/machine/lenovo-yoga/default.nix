@@ -4,48 +4,54 @@
   imports = [
     # Hardware scan
     ./hardware-configuration.nix
-    ../../wm/gnome.nix
+    ../../wm/hyprland.nix
   ];
 
-  # Use the GRUB 2 boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+
+    # Use the systemd-boot EFI boot loader.
     loader = {
-      grub = {
-        enable = true;
-        device = "/dev/nvme0n1"; # or "nodev" for efi only
-      };
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
     };
+
+    initrd.kernelModules = [ "amdgpu" ];
   };
 
   networking = {
-    hostName = "dell-xps-15-9560";
-    interfaces.wlp2s0.useDHCP = true;
+    hostName = "lenovo-yoga";
+  #  interfaces = {
+  #    eno1.useDHCP = true;
+  #    wlp1s0.useDHCP = true;
+  #  };
   };
 
-  fileSystems."/data" = {
-    device = "/dev/nvme0n1p3";
-    fsType = "ext4";
-  };
+  services.sysprof.enable = true;
 
   services.xserver = {
+    videoDrivers = [ "amdgpu" ];
+
     xrandrHeads = [
       {
-        output = "HDMI-1";
+        output = "HDMI-A-0";
         primary = true;
         monitorConfig = ''
-          Option "PreferredMode" "3840x2160"
+          Modeline "1920x1080_30.00"  338.75  3840 4080 4488 5136  2160 2163 2168 2200 -hsync +vsync
+          Option "PreferredMode" "3840x2160_30.00"
           Option "Position" "0 0"
         '';
       }
       {
-        output = "eDP-1";
+        output = "eDP";
+        primary = false;
         monitorConfig = ''
-          Option "PreferredMode" "3840x2160"
+          Option "PreferredMode" "1920x1080"
           Option "Position" "0 0"
         '';
       }
     ];
+
     resolutions = [
       { x = 2048; y = 1152; }
       { x = 1920; y = 1080; }

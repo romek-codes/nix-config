@@ -39,13 +39,30 @@ let
   scripts = pkgs.callPackage ./scripts.nix { };
 
   workspaceConf = { monitor }: ''
-    workspace=1,persistent:true,monitor:${monitor}
-    workspace=2,persistent:true,on-created-empty:${lib.exe scripts.wsNix},monitor:${monitor}
-    workspace=3,persistent:true,monitor:${monitor}
-    workspace=4,persistent:true,monitor:${monitor}
-    workspace=5,persistent:true,on-created-empty:firefox-beta -p 'sxm',monitor:${monitor}
-    workspace=6,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
+    workspace=1,persistent:true,on-created-empty:firefox-beta -p 'sxm'
+    workspace=2,persistent:true,on-created-empty:footclient -e btm
+    workspace=3,persistent:true,on-created-empty:${lib.exe scripts.wsNix}
+    workspace=4,persistent:true
+    workspace=5,persistent:true
+    workspace=6,persistent:true
+    workspace=6,persistent:true
+    workspace=8,persistent:true
+    workspace=9,persistent:true
+    workspace=10,persistent:true
   '';
+
+
+    # Backup, just in case. 
+    # workspace=1,persistent:true,on-created-empty:firefox-beta -p 'sxm',monitor:${monitor}
+    # workspace=2,persistent:true,monitor:${monitor}
+    # workspace=3,persistent:true,on-created-empty:${lib.exe scripts.wsNix},monitor:${monitor}
+    # workspace=4,persistent:true,monitor:${monitor}
+    # workspace=5,persistent:true,monitor:${monitor}
+    # workspace=6,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
+    # workspace=7,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
+    # workspace=8,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
+    # workspace=9,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
+    # workspace=10,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
 in
 {
   imports = [
@@ -101,7 +118,8 @@ in
 
     xdg.configFile."hypr/monitors.conf".text = ''
       # Default monitor configuration
-      monitor=,preferred,auto,1
+      monitor=eDP-1,preffered,1080x0,1
+      monitor=DP-2,1920x1080,0x43,1,transform,1
     '';
 
   wayland.windowManager.hyprland = {

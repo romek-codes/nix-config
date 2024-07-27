@@ -1,5 +1,5 @@
 {
-  description = "gvolpe's Home Manager & NixOS configurations";
+  description = "g̶v̶o̶l̶p̶e̶'̶s̶ romek-code's Home Manager & NixOS configurations";
 
   nixConfig = {
     extra-substituters = [

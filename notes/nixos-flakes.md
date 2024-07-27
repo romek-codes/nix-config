@@ -39,5 +39,5 @@ $ sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 Perhaps we also need to add the `--impure` flag.
 
 ```console
-$ nixos-install --root /mnt --flake github:gvolpe/nix-config#tongfang-amd
+$ nixos-install --root /mnt --flake github:gvolpe/nix-config#lenovo-yoga
 ```
