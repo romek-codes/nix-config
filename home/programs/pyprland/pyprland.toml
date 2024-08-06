@@ -25,8 +25,8 @@ skip_windowrules = ["aspect", "workspace"]
 
 [scratchpads.musicplayer]
 animation = ""
-command = "spotube"
-class = "Spotube"
+command = "spotify"
+class = "Spotify"
 lazy = true
 size = "70% 70%"
 margin = 0

@@ -7,18 +7,14 @@ let
     inherit (cowsay.packages.${system}) cowsay;
   };
 
-  fishOverlay = f: p: {
-    inherit fish-bobthefish-theme fish-keytool-completions;
-  };
-
   nixSearchOverlay = f: p: {
     nix-search = nix-search.packages.${system}.default;
   };
 
-  metalsOverlay = f: p: {
-    metals = p.callPackage ../home/programs/neovim-ide/metals.nix { };
-    metals-updater = p.callPackage ../home/programs/neovim-ide/update-metals.nix { };
-  };
+  # metalsOverlay = f: p: {
+  #   metals = p.callPackage ../home/programs/neovim-ide/metals.nix { };
+  #   metals-updater = p.callPackage ../home/programs/neovim-ide/update-metals.nix { };
+  # };
 
   # nixos-version needs this to work with flakes
   libVersionOverlay = import "${inputs.nixpkgs}/lib/flake-version-info.nix" inputs.nixpkgs;
@@ -78,7 +74,7 @@ let
   xargsOverlay = f: p: {
     xargs = { hidpi }: {
       inherit hidpi;
-      inherit (inputs) gh-md-toc penguin-fox;
+      inherit (inputs) gh-md-toc penguin-fox spicetify-nix;
       inherit (inputs.rycee-nurpkgs.lib.${system}) buildFirefoxXpiAddon;
       addons = f.nur.repos.rycee.firefox-addons;
     };
@@ -94,17 +90,24 @@ let
       '';
     });
   };
-in
+
+  spotxOverlay = f: p: {
+    spotx = p.callPackage ./spotx.nix { };
+  };
+
+  splitMonitorWorkspacesOverlay = f: p: {
+    split-monitor-workspaces = inputs.split-monitor-workspaces.packages.${system}.split-monitor-workspaces;
+  };
+  in
 [
   cowsayOverlay
-  fishOverlay
   libOverlay
   nixSearchOverlay
-  metalsOverlay
+  # metalsOverlay
   secretsOverlay
   megasyncOverlay
   nurpkgs.overlay
-  neovim-flake.overlays.${system}.default
+  # neovim-flake.overlays.${system}.default
   statix.overlays.default
   xargsOverlay
   (import ../home/overlays/bat-lvl)
@@ -116,4 +119,6 @@ in
   buildersOverlay
   treesitterGrammarsOverlay
   schemaOverlay
+  spotxOverlay
+  splitMonitorWorkspacesOverlay
 ]

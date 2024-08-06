@@ -142,14 +142,14 @@ in
     myfonts.icomoon-feather
   ];
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.romek = {
     isNormalUser = true;
     # wheel for 'sudo', uucp for bazecor to access ttyAMC0 (keyboard firmware updates)
     extraGroups = [ "docker" "networkmanager" "wheel" "scanner" "lp" "uucp" ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   security = {

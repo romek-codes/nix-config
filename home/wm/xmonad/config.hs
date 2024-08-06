@@ -412,7 +412,7 @@ nautilus  = ClassApp "org.gnome.Nautilus"   "nautilus"
 office    = ClassApp "libreoffice-draw"     "libreoffice-draw"
 pavuctrl  = ClassApp "Pavucontrol"          "pavucontrol"
 scr       = ClassApp "SimpleScreenRecorder" "simplescreenrecorder"
-spotube   = ClassApp "Spotube"              "spotube"
+spotify   = ClassApp "Spotify"              "spotify"
 vlc       = ClassApp "Vlc"                  "vlc"
 
 myManageHook = manageApps <+> manageSpawn <+> manageScratchpads

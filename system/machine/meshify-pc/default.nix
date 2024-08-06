@@ -20,7 +20,7 @@
   };
 
   networking = {
-    hostName = "lenovo-yoga";
+    hostName = "meshify-pc";
   #  interfaces = {
   #    eno1.useDHCP = true;
   #    wlp1s0.useDHCP = true;

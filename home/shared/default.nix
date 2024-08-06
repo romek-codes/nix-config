@@ -6,7 +6,7 @@ let
   configHome = "${homeDirectory}/.config";
 
   packages = with pkgs; [
-    any-nix-shell # fish support for nix shell
+    any-nix-shell # fish & zsh support for nix shell
     audacious # simple music player
     bazecor # configuration software for the dygma defy keyboard
     bottom # alternative to htop & ytop
@@ -29,14 +29,13 @@ let
     ranger # terminal file explorer
     ripgrep # fast grep
     screenkey # shows keypresses on screen
-    spotube # music player
+    spotify # music player
     tdesktop # telegram messaging client
     tree # display files in a tree view
     vlc # media player
     xsel # clipboard support (also for neovim)
-    tmux # terminal multiplexer
-    lunarvim # current nvim distro i'm using
     lazygit # my preferred way of interacting with git (i'm lazy)
+    # spicetify-cli # commented out in favor of spicetify-nix (if i can get it working)
   ];
 in
 {

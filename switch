@@ -40,6 +40,12 @@ rebuild_lenovo() {
   sudo nixos-rebuild switch --flake .#lenovo-yoga
 }
 
+rebuild_meshify() {
+  # nix build .#nixosConfigurations.lenovo-yoga.config.system.build.toplevel
+  # sudo result/bin/switch-to-configuration switch
+  sudo nixos-rebuild switch --flake .#meshify-pc
+}
+
 rebuild_lenovo_vm() {
   nixos-rebuild build-vm --flake .#lenovo-yoga
 }
@@ -100,6 +106,8 @@ case $1 in
     fish -c fish_update_completions;;
   "lenovo")
     rebuild_lenovo;;
+  "meshify")
+    rebuild_meshify;;
   "vm")
     rebuild_lenovo_vm;;
   *)

@@ -6,27 +6,22 @@ let
   inherit (nixpkgs.lib) nixosSystem;
   inherit (pkgs) lib;
 
-  lenovoModules = [
-    ../system/machine/lenovo-yoga
+  sharedModules = [
     ../system/configuration.nix
     extraSystemConfig
   ];
 in
 {
-  dell-xps = nixosSystem {
+  meshify-pc = nixosSystem {
     inherit lib pkgs system;
     specialArgs = { inherit inputs; };
-    modules = [
-      ../system/machine/dell-xps
-      ../system/configuration.nix
-      extraSystemConfig
-    ];
+    modules = [../system/machine/meshify-pc] ++ sharedModules;
   };
 
   lenovo-yoga = nixosSystem {
     inherit lib pkgs system;
     specialArgs = { inherit inputs; };
-    modules = lenovoModules;
+    modules = [../system/machine/lenovo-yoga] ++ sharedModules;
   };
 
   # FIXME: zfs-kernel-2.2.3-6.8.9 is marked as broken

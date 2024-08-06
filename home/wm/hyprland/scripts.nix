@@ -32,8 +32,8 @@ in
   inherit extMonitor monitorAdded monitorRemoved;
 
   wsNix = writeShellScriptBin "ws-nix" ''
-    footclient -D ~/workspace/nix-config -E fish -C 'hyfetch' &
-    footclient -D ~/workspace/nix-config -E fish -C 'nitch' &
+    footclient -D ~/workspace/nix-config -E zsh -C 'hyfetch' &
+    footclient -D ~/workspace/nix-config -E zsh -C 'nitch' &
   '';
 
   monitorInit = writeShellScriptBin "monitor-init" ''

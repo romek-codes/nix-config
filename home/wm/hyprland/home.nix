@@ -22,7 +22,7 @@ let
 
   packages = with pkgs; [
     brightnessctl # control laptop display brightness
-    cinnamon.nemo # file manager
+    nemo # file manager
     loupe # image viewer
     grim # screenshots
     grimblast # screenshot program from hyprland
@@ -40,29 +40,17 @@ let
 
   workspaceConf = { monitor }: ''
     workspace=1,persistent:true,on-created-empty:firefox-beta -p 'sxm'
-    workspace=2,persistent:true,on-created-empty:footclient -e btm
-    workspace=3,persistent:true,on-created-empty:${lib.exe scripts.wsNix}
+    workspace=2,persistent:true
+    workspace=3,persistent:true
     workspace=4,persistent:true
     workspace=5,persistent:true
     workspace=6,persistent:true
     workspace=6,persistent:true
     workspace=8,persistent:true
     workspace=9,persistent:true
-    workspace=10,persistent:true
+    workspace=10,persistent:true,on-created-empty:footclient -e btm
   '';
 
-
-    # Backup, just in case. 
-    # workspace=1,persistent:true,on-created-empty:firefox-beta -p 'sxm',monitor:${monitor}
-    # workspace=2,persistent:true,monitor:${monitor}
-    # workspace=3,persistent:true,on-created-empty:${lib.exe scripts.wsNix},monitor:${monitor}
-    # workspace=4,persistent:true,monitor:${monitor}
-    # workspace=5,persistent:true,monitor:${monitor}
-    # workspace=6,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
-    # workspace=7,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
-    # workspace=8,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
-    # workspace=9,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
-    # workspace=10,persistent:true,on-created-empty:footclient -e btm,monitor:${monitor}
 in
 {
   imports = [
@@ -81,7 +69,7 @@ in
 
     sessionVariables = {
       NIXOS_OZONE_WL = 1;
-      SHELL = "${lib.exe pkgs.fish}";
+      SHELL = "${lib.exe pkgs.zsh}";
       MOZ_ENABLE_WAYLAND = 1;
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
@@ -119,7 +107,8 @@ in
     xdg.configFile."hypr/monitors.conf".text = ''
       # Default monitor configuration
       monitor=eDP-1,preffered,1080x0,1
-      monitor=DP-2,1920x1080,0x43,1,transform,1
+      # monitor=DP-2,1920x1080,0x43,1,transform,1
+      monitor=,preffered,auto,1
     '';
 
   wayland.windowManager.hyprland = {
@@ -145,7 +134,9 @@ in
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --sm-disable --indicator
       exec-once=${lib.exe pkgs.pasystray}
     '';
-    plugins = [ ];
+    plugins = [
+      # split-monitor-workspaces
+    ];
     systemd = {
       enable = true;
       variables = [ "--all" ];

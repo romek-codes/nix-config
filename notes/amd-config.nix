@@ -43,7 +43,7 @@
   users.users.romek = {
     isNormalUser = true;
     extraGroups  = [ "docker" "networkmanager" "wheel" ]; # wheel for ‘sudo’.
-    shell        = pkgs.fish;
+    shell        = pkgs.zsh;
   };
 
   # Allow unfree packages

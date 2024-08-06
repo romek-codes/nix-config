@@ -1,5 +1,4 @@
-nix-config
-==========
+# nix-config
 
 ![ci-badge](https://img.shields.io/static/v1?label=Built%20with&message=nix&color=blue&style=flat&logo=nixos&link=https://nixos.org&labelColor=111212)
 [![built with garnix](https://img.shields.io/endpoint?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2Fgvolpe%2Fnix-config%3Fbranch%3Dmaster)](https://garnix.io)
@@ -15,18 +14,18 @@ This is my current Window Manager — the hype Wayland kid on the block!
 <details>
 <summary>Environment details</summary>
 
-| Type           | Program      |
-| :------------- | :----------: |
-| Editor         | [NeoVim](https://neovim.io/) |
-| Launcher       | [Wofi](https://sr.ht/~scoopta/wofi) |
-| Shell          | [Fish](https://fishshell.com/) |
-| Status Bar     | [Waybar](https://github.com/Alexays/Waybar) |
-| Terminal       | [Foot](https://codeberg.org/dnkl/foot) |
-| Window Manager | [Hyprland](https://hyprland.org/) |
-| File Manager   | [Nemo](https://github.com/linuxmint/nemo) |
-| GTK Theme      | [Juno Ocean](https://github.com/EliverLara/Juno) |
+| Type           |                       Program                        |
+| :------------- | :--------------------------------------------------: |
+| Editor         |             [NeoVim](https://neovim.io/)             |
+| Launcher       |         [Wofi](https://sr.ht/~scoopta/wofi)          |
+| Shell          |          [Zsh with OMZ](https://ohmyz.sh/)           |
+| Status Bar     |     [Waybar](https://github.com/Alexays/Waybar)      |
+| Terminal       |        [Foot](https://codeberg.org/dnkl/foot)        |
+| Window Manager |          [Hyprland](https://hyprland.org/)           |
+| File Manager   |      [Nemo](https://github.com/linuxmint/nemo)       |
+| GTK Theme      |   [Juno Ocean](https://github.com/EliverLara/Juno)   |
 | GTK Icon Theme | [Beauty Line](https://www.gnome-look.org/p/1425426/) |
-| Terminal Font  | [JetBrainsMono](https://www.jetbrains.com/lp/mono/) |
+| Terminal Font  | [JetBrainsMono](https://www.jetbrains.com/lp/mono/)  |
 
 </details>
 
@@ -52,18 +51,18 @@ XMonad will be forever in my heart — the best X window manager!
 <details>
 <summary>Environment details</summary>
 
-| Type           | Program      |
-| :------------- | :----------: |
-| Editor         | [NeoVim](https://neovim.io/) |
-| Launcher       | [Rofi](https://github.com/davatorium/rofi) |
-| Shell          | [Fish](https://fishshell.com/) |
-| Status Bar     | [Polybar](https://polybar.github.io/) |
-| Terminal       | [Alacritty](https://github.com/alacritty/alacritty) |
-| Window Manager | [XMonad](https://xmonad.org/) |
-| File Manager   | [Nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
-| GTK Theme      | [Juno Ocean](https://github.com/EliverLara/Juno) |
+| Type           |                       Program                        |
+| :------------- | :--------------------------------------------------: |
+| Editor         |             [NeoVim](https://neovim.io/)             |
+| Launcher       |      [Rofi](https://github.com/davatorium/rofi)      |
+| Shell          |            [Fish](https://fishshell.com/)            |
+| Status Bar     |        [Polybar](https://polybar.github.io/)         |
+| Terminal       | [Alacritty](https://github.com/alacritty/alacritty)  |
+| Window Manager |            [XMonad](https://xmonad.org/)             |
+| File Manager   | [Nautilus](https://gitlab.gnome.org/GNOME/nautilus)  |
+| GTK Theme      |   [Juno Ocean](https://github.com/EliverLara/Juno)   |
 | GTK Icon Theme | [Beauty Line](https://www.gnome-look.org/p/1425426/) |
-| Terminal Font  | [JetBrainsMono](https://www.jetbrains.com/lp/mono/) |
+| Terminal Font  | [JetBrainsMono](https://www.jetbrains.com/lp/mono/)  |
 
 </details>
 

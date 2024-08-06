@@ -11,7 +11,7 @@ in
     server.enable = true;
     settings = {
       main = {
-        shell = "${pkgs.fish}/bin/fish";
+        shell = "${pkgs.zsh}/bin/zsh";
         font = "JetBrainsMono Nerdfont:size=${fontSize}";
         pad = "12x12";
         dpi-aware = "yes";

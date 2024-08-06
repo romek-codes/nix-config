@@ -4,8 +4,9 @@ with inputs;
 
 let
   sharedImports = [
-    neovim-flake.homeManagerModules.${system}.default
+    # neovim-flake.homeManagerModules.${system}.default
     ({ home.packages = extraPkgs; })
+    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   hyprlandDpiSettings = { hidpi }: {
@@ -41,7 +42,11 @@ let
     (
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = pkgs.xargs { inherit hidpi; };
+        extraSpecialArgs = pkgs.xargs { 
+          inherit hidpi; 
+          inherit (inputs);
+          # split-monitor-workspaces;
+        };
         modules = [{ inherit imports; }];
       }
     );

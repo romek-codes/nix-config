@@ -37,24 +37,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-flake = {
+    # neovim-flake = {
       #url = git+file:///home/gvolpe/workspace/neovim-flake;
-      url = github:gvolpe/neovim-flake;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-schemas.follows = "flake-schemas";
-    };
-
-    # Fish shell
-
-    fish-bobthefish-theme = {
-      url = github:gvolpe/theme-bobthefish;
-      flake = false;
-    };
-
-    fish-keytool-completions = {
-      url = github:ckipp01/keytool-fish-completions;
-      flake = false;
-    };
+      # url = github:gvolpe/neovim-flake;
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.flake-schemas.follows = "flake-schemas";
+    # };
 
     # Github Markdown ToC generator
 
@@ -87,6 +75,18 @@
     penguin-fox = {
       url = github:p3nguin-kun/penguinFox;
       flake = false;
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
     };
   };
 

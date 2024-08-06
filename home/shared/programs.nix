@@ -5,7 +5,7 @@ let
 
       broot = {
         enable = true;
-        enableFishIntegration = true;
+        enableFishIntegration = false;
       };
 
       direnv = {
@@ -42,7 +42,6 @@ let
 
       zoxide = {
         enable = true;
-        enableFishIntegration = true;
         options = [ ];
       };
     };
@@ -52,16 +51,18 @@ in
   ../programs/dconf
   ../programs/git
   ../programs/firefox
-  ../programs/fish
+  ../programs/zsh
   ../programs/khal
   ../programs/md-toc
   ../programs/mimeo
   ../programs/mpv
   ../programs/neofetch
-  ../programs/neovim-ide
+  ../programs/lunarvim
   ../programs/ngrok
   ../programs/signal
   ../programs/yubikey
   ../programs/zathura
+  ../programs/tmux
+  # ../programs/spicetify-nix
   more
 ]
