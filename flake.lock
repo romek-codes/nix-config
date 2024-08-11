@@ -399,11 +399,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1722800434,
-        "narHash": "sha256-NIKIXBkybpOIo5G9ph2TcOF4eQWTtAOAx9Dfr1wnoFE=",
+        "lastModified": 1723143710,
+        "narHash": "sha256-p3UvW9mj6+hb+ofLEgbwSFsjoA7lKpIuDSfG4r1OpDo=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "2b520571e897be2a0e88c8692da607b062000038",
+        "rev": "4b4971c06fb02df00a2bd20b6b47b5d0e7d799a7",
         "type": "github"
       },
       "original": {
@@ -769,6 +769,7 @@
         "nixpkgs-mega": "nixpkgs-mega",
         "nurpkgs": "nurpkgs",
         "penguin-fox": "penguin-fox",
+        "rust-overlay": "rust-overlay",
         "rycee-nurpkgs": "rycee-nurpkgs",
         "spicetify-nix": "spicetify-nix",
         "split-monitor-workspaces": "split-monitor-workspaces",
@@ -789,6 +790,26 @@
         "owner": "rust-analyzer",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1723083652,
+        "narHash": "sha256-ait+SeO67n8b3lIaBWwuzVX6F1zyTJ0cY6cHWtvhTyc=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "69e0ad9289fc08ee5a313fb107f00e0f21e7cbb2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
         "type": "github"
       }
     },

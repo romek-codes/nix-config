@@ -44,15 +44,13 @@ in
   time.timeZone = "Europe/Warsaw";
 
   # List packages installed in system profile
+  # TODO: Figure out how to put most 
+  # this stuff into /home/shared/programs instead.
+  # Why is finding fzf zoxide etc but not webcord-vencord or nil when I put it there?
+  # I'm missing something...
   environment.systemPackages = with pkgs; [
     firejail
     nix-schema
-    vim
-    wget
-    gcc
-    rustc
-    cargo
-    nil
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -132,6 +130,9 @@ in
     };
 
     logind.lidSwitch = "hibernate";
+
+    # In nixos calibre wiki, it says this will be needed for detecting usb devices, but stuff works so idk.
+    # udisks2.enable = true;
   };
 
   # Making fonts accessible to applications.

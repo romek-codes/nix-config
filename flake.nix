@@ -26,14 +26,14 @@
     };
 
     rycee-nurpkgs = {
-      url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nurpkgs.url = github:nix-community/NUR;
+    nurpkgs.url = "github:nix-community/NUR";
 
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -47,34 +47,39 @@
     # Github Markdown ToC generator
 
     gh-md-toc = {
-      url = github:ekalinin/github-markdown-toc;
+      url = "github:ekalinin/github-markdown-toc";
       flake = false;
     };
 
     # Fast nix search client
     nix-search = {
-      url = github:diamondburned/nix-search;
+      url = "github:diamondburned/nix-search";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Nix linter
 
     statix = {
-      url = github:nerdypepper/statix;
+      url = "github:nerdypepper/statix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Miscelaneous
 
     cowsay = {
-      url = github:snowfallorg/cowsay;
+      url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Firefox style
     penguin-fox = {
-      url = github:p3nguin-kun/penguinFox;
+      url = "github:p3nguin-kun/penguinFox";
       flake = false;
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify-nix = {

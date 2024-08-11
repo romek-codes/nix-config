@@ -22,8 +22,8 @@
     "format": "{icon}",
     "format-icons": {
       "1": "",
-      "2": " ",
-      "3": " ",
+      "2": " ",
+      "3": " ",
       "4": "",
       "5": "󰐻 ",
       "6": " ",
@@ -70,7 +70,10 @@
     "format-muted": "MUTE",
     "format-icons": {
       "headphones": "",
-      "default": ["", ""]
+      "default": [
+        "",
+        ""
+      ]
     },
     "scroll-step": 5,
     "on-click": "pulsemixer",
@@ -91,7 +94,13 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "disk": {
     "interval": 5,
@@ -104,7 +113,9 @@
   },
   "custom/spotify": {
     "format": "{icon}",
-    "format-icons": ["󰓇 "]
+    "format-icons": [
+      "󰓇 "
+    ]
   },
   "custom/mpris": {
     "format": "{}",
@@ -120,7 +131,13 @@
       "children-class": "not-power",
       "transition-left-to-right": true
     },
-    "modules": ["custom/power", "custom/quit", "custom/lock", "custom/reboot"]
+    "modules": [
+      "custom/power",
+      "custom/quit",
+      "custom/lock",
+      "custom/reboot",
+      "custom/suspend"
+    ]
   },
   "custom/quit": {
     "format": "󰗼 ",
@@ -141,6 +158,11 @@
     "format": "   ",
     "tooltip": false,
     "on-click": "poweroff"
+  },
+  "custom/suspend": {
+    "format": "󰒲  ",
+    "tooltip": false,
+    "on-click": "systemctl suspend"
   },
   "network": {
     "format": "{ifname}",

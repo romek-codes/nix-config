@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -17,7 +17,19 @@
     };
 
     initrd.kernelModules = [ "amdgpu" ];
-  };
+
+    # For obs virtual camera
+    extraModulePackages = with config.boot.kernelPackages; [
+        v4l2loopback
+    ];
+
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
+
+    supportedFilesystems = [ "ntfs" ];
+
+    };
 
   networking = {
     hostName = "meshify-pc";
@@ -65,7 +77,20 @@
 
   services.tlp.enable = true;
   powerManagement.enable = true;
+  security.polkit.enable = true;
 
+
+  programs = {
+    # I guess this can't be installed using home-manager, at least not in a straight forward way..
+    # https://github.com/nix-community/home-manager/issues/4314
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; 
+      dedicatedServer.openFirewall = true; 
+      localNetworkGameTransfers.openFirewall = true;
+      gamescopeSession.enable = true;
+    };
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

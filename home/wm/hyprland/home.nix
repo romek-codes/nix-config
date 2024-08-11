@@ -29,8 +29,24 @@ let
     libnotify # notifications
     nix-search # faster nix search client
     wl-clipboard # clipboard support
-    wofi # app launcher
     xwaylandvideobridge # screensharing bridge
+    vesktop # Discord modded client with wayland support
+    spotify # Spotify, duh
+    calibre # Ebook management software
+    wget
+    gcc
+    rustc
+    cargo
+    nil
+    unzip
+
+    # Games
+    (lutris.override {
+       extraPkgs = pkgs: [
+         fuse
+       ];
+    })
+    pcsx2
   ] ++ fontPkgs ++ audioPkgs;
 
   gblast = lib.exe pkgs.grimblast;
@@ -39,8 +55,8 @@ let
   scripts = pkgs.callPackage ./scripts.nix { };
 
   workspaceConf = { monitor }: ''
-    workspace=1,persistent:true,on-created-empty:firefox-beta -p 'sxm'
-    workspace=2,persistent:true
+    workspace=1,persistent:true,on-created-empty:firefox-beta
+    workspace=2,persistent:true,on-created-empty:footclient
     workspace=3,persistent:true
     workspace=4,persistent:true
     workspace=5,persistent:true
@@ -61,6 +77,7 @@ in
     ../../programs/pyprland
     ../../programs/waybar
     ../../services/hypridle
+    ../../programs/rofi
   ];
 
   home = {
@@ -105,17 +122,24 @@ in
   };
 
     xdg.configFile."hypr/monitors.conf".text = ''
-      # Default monitor configuration
-      monitor=eDP-1,preffered,1080x0,1
-      # monitor=DP-2,1920x1080,0x43,1,transform,1
-      monitor=,preffered,auto,1
+      # TODO: Figure out how to handle this automatically
+      # PC
+      monitor=HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
+      monitor=DP-1,preferred,1080x0,1
+      # Laptop
+      # monitor=eDP-1,preferred,1080x0,1
+      # monitor=DP-2,1920x1080,0x43,1,transform,1 # Iiyama vertical
+      monitor=,preferred,auto,1
     '';
 
   wayland.windowManager.hyprland = {
     enable = true;
+    # package = pkgs.hyprland.packages.${pkgs.system}.hyprland;
+    # package = pkgs.hyprland;
 
     extraConfig = (builtins.readFile ./hyprland.conf) + ''
-      bind=SUPER,P,exec,${lib.exe pkgs.wofi} --show run --style=${./wofi.css} --term=footclient --prompt=Run
+      bind=SUPER,P,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
+      bind=SUPER,TAB,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
       bind=SUPER,A,exec,${gblast} save area
       bind=SUPER,S,exec,${gblast} save screen
       bind=SUPERCTRL,L,exec,${lib.exe pkgs.hyprlock}
@@ -135,8 +159,8 @@ in
       exec-once=${lib.exe pkgs.pasystray}
     '';
     plugins = [
-      # split-monitor-workspaces
-    ];
+      # split-monitor-workspaces.packages.${system}.split-monitor-workspaces
+      ];
     systemd = {
       enable = true;
       variables = [ "--all" ];

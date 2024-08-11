@@ -10,7 +10,8 @@ window#waybar {
 
 #custom-right-arrow-dark,
 #custom-left-arrow-dark {
-  color: #1a1a1a;
+  /* color: #1a1a1a; */
+  color: rgba(0, 0, 0, 0.5);
 }
 
 #custom-right-arrow-light,
@@ -21,14 +22,12 @@ window#waybar {
 
 /* just the logo */
 #custom-spotify {
-  background: #1a1a1a;
   color: #04982c;
   padding: 5px 5px;
 }
 
 /* the info displayed by playerctl */
 #custom-mpris {
-  background: #1a1a1a;
   color: #2aa198;
   padding: 5px 5px;
 }
@@ -45,8 +44,19 @@ window#waybar {
 #cpu,
 #battery,
 #disk,
-#tray {
-  background: #1a1a1a;
+#tray,
+#custom-mpris,
+#custom-spotify,
+#custom-quit,
+#custom-lock,
+#custom-power,
+#custom-reboot,
+#custom-suspend,
+#network,
+#language,
+#window {
+  /* background: #1a1a1a; */
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #workspaces button {
@@ -102,24 +112,24 @@ window#waybar {
   padding: 0 10px;
 }
 
+#custom-suspend {
+  color: #4062c0;
+}
+
 #custom-quit {
   color: #f59809;
-  background: #1a1a1a;
 }
 
 #custom-lock {
   color: #6f05e5;
-  background: #1a1a1a;
 }
 
 #custom-reboot {
   color: #00aba3;
-  background: #1a1a1a;
 }
 
 #custom-power {
   color: #ff1818;
-  background: #1a1a1a;
 }
 
 #not-power {
@@ -128,7 +138,6 @@ window#waybar {
 }
 
 #network {
-  background: #1a1a1a;
   padding: 0px 15px;
 }
 
@@ -150,12 +159,10 @@ window#waybar {
 
 #language {
   color: #b58900;
-  background: #1a1a1a;
   border-radius: 0px;
   padding: 0px 5px;
 }
 
 #window {
-  background: #1a1a1a;
   padding: 0px 0px;
 }

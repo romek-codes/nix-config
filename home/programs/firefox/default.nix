@@ -14,7 +14,7 @@ let
     ff2mpv
     # auto-accepts cookies, use only with privacy-badger & ublock-origin
     istilldontcareaboutcookies
-    languagetool
+    # languagetool
     link-cleaner
     privacy-badger
     simple-tab-groups
@@ -82,9 +82,9 @@ let
     "general.autoScroll" = true;
     "general.useragent.locale" = "en-US";
 
-    "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+    "extensions.activeThemeID" = "nicothin-space@mozilla.org";
 
-    "extensions.extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+    "extensions.extensions.activeThemeID" = "nicothin-space@mozilla.org";
     "extensions.update.enabled" = false;
     "extensions.webcompat.enable_picture_in_picture_overrides" = true;
     "extensions.webcompat.enable_shims" = true;

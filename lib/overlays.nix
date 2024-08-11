@@ -91,13 +91,10 @@ let
     });
   };
 
-  spotxOverlay = f: p: {
-    spotx = p.callPackage ./spotx.nix { };
-  };
+  spotifyOverlay = f: p: {
+      spotify = p.callPackage ../home/programs/spotify{};
+    };
 
-  splitMonitorWorkspacesOverlay = f: p: {
-    split-monitor-workspaces = inputs.split-monitor-workspaces.packages.${system}.split-monitor-workspaces;
-  };
   in
 [
   cowsayOverlay
@@ -108,6 +105,7 @@ let
   megasyncOverlay
   nurpkgs.overlay
   # neovim-flake.overlays.${system}.default
+  # split-monitor-workspaces.packages.${system}.default
   statix.overlays.default
   xargsOverlay
   (import ../home/overlays/bat-lvl)
@@ -119,6 +117,5 @@ let
   buildersOverlay
   treesitterGrammarsOverlay
   schemaOverlay
-  spotxOverlay
-  splitMonitorWorkspacesOverlay
+  spotifyOverlay
 ]

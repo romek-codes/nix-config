@@ -33,7 +33,9 @@ NOTE: the `gen-ssh-key` should be installed by Home Manager (defined [here](../h
 
 ## GPG migration & secrets
 
-Once `git-crypt` is installed (set up via Home Manager in the previous step), we'll need a valid GPG key to decode secrets. The GPG key can be imported from another machine as follows:
+Once `git-crypt` is installed (set up via Home Manager in the previous step), 
+we'll need a valid GPG key to decode secrets.
+The GPG key can be imported from another machine as follows:
 
 1. Export private GPG key on the existing machine.
 

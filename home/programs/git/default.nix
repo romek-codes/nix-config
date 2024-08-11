@@ -69,10 +69,10 @@ in
       "*.jvmopts" # should be local to every project
     ];
     signing = {
-      key = "99B1E21248E65ACE";
+      key = "7AE6055A1268DAD6";
       signByDefault = true;
     };
-    userEmail = "romanjuszczyk@tuta.io";
+    userEmail = "contact@romek.codes";
     userName = "romek";
   } // (pkgs.sxm.git or { });
 }

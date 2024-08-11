@@ -14,16 +14,6 @@ switch_display() {
   systemctl --user restart polybar.service
 }
 
-rebuild_xmonad_edp() {
-  nix build .#homeConfigurations.xmonad-edp.activationPackage
-  activate_hm
-}
-
-rebuild_xmonad_hdmi() {
-  nix build .#homeConfigurations.xmonad-hdmi.activationPackage
-  activate_hm
-}
-
 rebuild_hyprland_edp() {
   nix build .#homeConfigurations.hyprland-edp.activationPackage
   activate_hm
@@ -48,11 +38,6 @@ rebuild_meshify() {
 
 rebuild_lenovo_vm() {
   nixos-rebuild build-vm --flake .#lenovo-yoga
-}
-
-restart_X() {
-  echo "⚠️ Restarting X11 (requires authentication) ⚠️"
-  systemctl restart display-manager
 }
 
 # for fresh install only
@@ -90,18 +75,12 @@ post_home() {
 # end of fresh install section
 
 case $1 in
-  "xmedp")
-    rebuild_xmonad_edp;;
-  "xmhdmi")
-    rebuild_xmonad_hdmi;;
   "hpedp")
     rebuild_hyprland_edp;;
   "hphdmi")
     rebuild_hyprland_hdmi;;
   "display")
     switch_display;;
-  "restart-x")
-    restart_X;;
   "update-fish")
     fish -c fish_update_completions;;
   "lenovo")

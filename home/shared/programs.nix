@@ -34,8 +34,16 @@ let
       jq.enable = true;
 
       obs-studio = {
-        enable = false;
-        plugins = [ ];
+        enable = true;
+        # plugins = [
+        #   (pkgs.wrapOBS {
+        #     plugins = with pkgs.obs-studio-plugins; [
+        #       wlrobs
+        #       obs-backgroundremoval
+        #       obs-pipewire-audio-capture
+        #     ];
+        #   })
+        # ];
       };
 
       ssh.enable = true;
@@ -44,6 +52,7 @@ let
         enable = true;
         options = [ ];
       };
+
     };
   };
 in
@@ -63,6 +72,7 @@ in
   ../programs/yubikey
   ../programs/zathura
   ../programs/tmux
+  # ../programs/spotify
   # ../programs/spicetify-nix
   more
 ]
