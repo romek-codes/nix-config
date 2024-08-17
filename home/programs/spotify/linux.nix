@@ -45,6 +45,7 @@
   perl,
   unzip,
   zip,
+  zenity,
   # High-DPI support: Spotify's --force-device-scale-factor argument
   # not added if `null`, otherwise, should be a number.
   deviceScaleFactor ? null,
@@ -200,7 +201,7 @@ in
         --add-flags "--force-device-scale-factor=${toString deviceScaleFactor}" \
       ''} \
         --prefix LD_LIBRARY_PATH : "$librarypath" \
-        --prefix PATH : "${gnome.zenity}/bin" \
+        --prefix PATH : "${zenity}/bin" \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--enable-features=UseOzonePlatform --ozone-platform=wayland}}"
 
       # fix Icon line in the desktop file (#48062)

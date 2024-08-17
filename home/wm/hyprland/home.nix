@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
 let
   fontPkgs = with pkgs; [
@@ -134,8 +134,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = pkgs.hyprland.packages.${pkgs.system}.hyprland;
-    # package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
     extraConfig = (builtins.readFile ./hyprland.conf) + ''
       bind=SUPER,P,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
@@ -159,8 +158,8 @@ in
       exec-once=${lib.exe pkgs.pasystray}
     '';
     plugins = [
-      # split-monitor-workspaces.packages.${system}.split-monitor-workspaces
-      ];
+      inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+    ];
     systemd = {
       enable = true;
       variables = [ "--all" ];

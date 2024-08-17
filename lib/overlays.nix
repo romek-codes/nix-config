@@ -105,7 +105,6 @@ let
   megasyncOverlay
   nurpkgs.overlay
   # neovim-flake.overlays.${system}.default
-  # split-monitor-workspaces.packages.${system}.default
   statix.overlays.default
   xargsOverlay
   (import ../home/overlays/bat-lvl)
