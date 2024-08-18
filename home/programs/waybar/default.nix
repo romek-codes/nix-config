@@ -2,6 +2,7 @@
 
 {
   # status bar for hyprland/wayland
+
   programs.waybar = {
     enable = true;
     settings = [

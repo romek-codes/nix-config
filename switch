@@ -9,11 +9,6 @@ activate_hm() {
   hm-changes-report
 }
 
-switch_display() {
-  autorandr --change
-  systemctl --user restart polybar.service
-}
-
 rebuild_hyprland_edp() {
   nix build .#homeConfigurations.hyprland-edp.activationPackage
   activate_hm
@@ -79,10 +74,6 @@ case $1 in
     rebuild_hyprland_edp;;
   "hphdmi")
     rebuild_hyprland_hdmi;;
-  "display")
-    switch_display;;
-  "update-fish")
-    fish -c fish_update_completions;;
   "lenovo")
     rebuild_lenovo;;
   "meshify")

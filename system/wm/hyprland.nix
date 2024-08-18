@@ -82,5 +82,45 @@
 
     # Allows Hyprland to run without root privileges
     seatd.enable = true;
+
+    keyd = {
+      enable = true;
+      keyboards = {
+        default = {
+          ids = [ "*" ]; 
+          settings = {
+          main = {
+            capslock = "toggle(number)";
+          };
+          number = {
+            a = "1";
+            s = "2";
+            d = "3";
+            f = "4";
+            g = "5";
+            h = "6";
+            j = "7";
+            k = "8";
+            l = "9";
+            semicolon = "0";
+          };
+          arrows = {
+            h = "left";
+            j = "down";
+            k = "up";
+            l = "right";
+          };
+          };
+        };
+      };
+    };
   };
+
+  # This helps with palm rejection when using keyd
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Serial Keyboards]
+    MatchUdevType=keyboard
+    MatchName=keyd virtual keyboard
+    AttrKeyboardIntegration=internal
+  '';
 }

@@ -33,6 +33,9 @@ let
     vesktop # Discord modded client with wayland support
     spotify # Spotify, duh
     calibre # Ebook management software
+    solaar # Logitech device manager
+    qdirstat # Storage management
+    obsidian
     wget
     gcc
     rustc
@@ -55,16 +58,9 @@ let
   scripts = pkgs.callPackage ./scripts.nix { };
 
   workspaceConf = { monitor }: ''
-    workspace=1,persistent:true,on-created-empty:firefox-beta
-    workspace=2,persistent:true,on-created-empty:footclient
-    workspace=3,persistent:true
-    workspace=4,persistent:true
-    workspace=5,persistent:true
-    workspace=6,persistent:true
-    workspace=6,persistent:true
-    workspace=8,persistent:true
-    workspace=9,persistent:true
-    workspace=10,persistent:true,on-created-empty:footclient -e btm
+    workspace=1,on-created-empty:firefox-beta
+    workspace=2,on-created-empty:footclient -e
+    workspace=10,on-created-empty:footclient -e btm
   '';
 
 in
