@@ -43,11 +43,6 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
-  # List packages installed in system profile
-  # TODO: Figure out how to put most 
-  # this stuff into /home/shared/programs instead.
-  # Why is finding fzf zoxide etc but not webcord-vencord or nil when I put it there?
-  # I'm missing something...
   environment.systemPackages = with pkgs; [
     firejail
     nix-schema
@@ -120,6 +115,15 @@ in
       yubikey-personalization # Yubikey OTP mode (udev)
     ];
 
+    udev.extraRules = ''
+      # OBS virtual camera
+      KERNEL=="video[0-9]*", GROUP="video", MODE="0666"
+
+      # Logitech devices for Solaar
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", MODE="0666"
+      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", MODE="0666"
+    '';
+
     # SSH daemon.
     sshd.enable = true;
 
@@ -149,7 +153,7 @@ in
   users.users.romek = {
     isNormalUser = true;
     # wheel for 'sudo', uucp for bazecor to access ttyAMC0 (keyboard firmware updates)
-    extraGroups = [ "docker" "networkmanager" "wheel" "scanner" "lp" "uucp" ];
+    extraGroups = [ "docker" "networkmanager" "wheel" "scanner" "lp" "uucp" "video" "input" ];
     shell = pkgs.zsh;
   };
 

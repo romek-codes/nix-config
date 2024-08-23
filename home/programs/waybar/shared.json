@@ -122,7 +122,7 @@
     "path": "/"
   },
   "tray": {
-    "icon-size": 20,
+    "icon-size": 16,
     "show-passive-items": true
   },
   "custom/spotify": {
@@ -191,8 +191,8 @@
   },
   "hyprland/language": {
     "format": "󰌌 {}",
-    "keyboard-name": "dygma-defy-keyboard",
-    "on-click": "hyprctl switchxkblayout dygma-defy-keyboard next"
+    "keyboard-name": "This works but doesnt update when changing layout.",
+    "on-click": "switch=$(hyprctl devices -j | jq -r '.keyboards[] | .active_keymap' | uniq -c | [ $(wc -l) -eq 1 ] && echo \"next\" || echo \"0\"); for device in $(hyprctl devices -j | jq -r '.keyboards[] | .name'); do hyprctl switchxkblayout $device $switch; done; activeKeymap=$(hyprctl devices -j | jq -r '.keyboards[0] | .active_keymap'); if [ $switch == \"0\" ]; then resetStr=\"(reset)\"; else resetStr=\"\"; fi; hyprctl notify -1 1500 0 \"$activeKeymap $resetStr\""
   },
   "hyprland/window": {
     "format": "{}",

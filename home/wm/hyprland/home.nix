@@ -33,15 +33,25 @@ let
     vesktop # Discord modded client with wayland support
     spotify # Spotify, duh
     calibre # Ebook management software
-    solaar # Logitech device manager
     qdirstat # Storage management
-    obsidian
+    obsidian # Notes with obsidian.nvim <3
+    onlyoffice-bin # Office stuff
+    thefuck # Funny and pretty useful cli utility
+    kdePackages.kdenlive # Video editor
+    kdePackages.breeze # Dark mode for kdenlive
+    solaar # Logitech device manager
+    cyme # lsusb and other utils
+    usb-modeswitch # turning devices off and on in cli
+    hyprpicker # color picker
+    amdvlk
     wget
     gcc
     rustc
     cargo
     nil
     unzip
+    gnumake
+    gcc
 
     # Games
     (lutris.override {
@@ -135,6 +145,7 @@ in
     extraConfig = (builtins.readFile ./hyprland.conf) + ''
       bind=SUPER,P,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
       bind=SUPER,TAB,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
+      bind=SUPER,C,exec,${lib.exe pkgs.hyprpicker} --autocopy
       bind=SUPER,A,exec,${gblast} save area
       bind=SUPER,S,exec,${gblast} save screen
       bind=SUPERCTRL,L,exec,${lib.exe pkgs.hyprlock}
@@ -155,6 +166,7 @@ in
     '';
     plugins = [
       inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      # inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
     ];
     systemd = {
       enable = true;

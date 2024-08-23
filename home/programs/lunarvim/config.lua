@@ -4,7 +4,6 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 lvim.builtin.nvimtree.setup.view.side = "right"
-
 require('lspconfig').lua_ls.setup({})
 require 'lspconfig'.tsserver.setup {
   init_options = {
@@ -38,6 +37,7 @@ linters.setup { { name = "phpstan" }, { name = "luacheck" } }
 vim.opt.conceallevel = 2
 lvim.format_on_save.enabled = true
 vim.diagnostic.config({ virtual_text = false })
+lvim.opt.autowriteall = true
 
 local Path = require("plenary.path")
 

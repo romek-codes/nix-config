@@ -91,6 +91,11 @@
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=v0.41.2";
     };
 
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     hyprsplit = {
       url = "github:shezdy/hyprsplit?ref=v0.41.2";
       inputs.hyprland.follows = "hyprland";

@@ -12,11 +12,12 @@
         monitor =
         path = screenshot
 
-        blur_passes = 1
+        blur_passes = 2
         blur_size = 7
         noise = 0.0117
         contrast = 0.8916
-        brightness = 0.8172
+        # brightness = 0.8172
+        brightness = 0.3
         vibrancy = 0.1696
         vibrancy_darkness = 0.0
     }
@@ -24,7 +25,7 @@
     image {
         monitor =
         path = ${../hyprpaper/astronaut-blackhole.jpg}
-        size = 700 # lesser side if not 1:1 ratio
+        size = 300 # lesser side if not 1:1 ratio
         rounding = -1 # negative values mean circle
         border_size = 4
         border_color = rgb(221, 221, 221)
@@ -63,7 +64,7 @@
         dots_center = false
         dots_rounding = -1 # -1 default circle, -2 follow input-field rounding
         outer_color = rgb(151515)
-        inner_color = rgb(200, 200, 200)
+        inner_color = rgb(221, 221, 221)
         font_color = rgb(10, 10, 10)
         fade_on_empty = true
         fade_timeout = 1000 # Milliseconds before fade_on_empty is triggered.

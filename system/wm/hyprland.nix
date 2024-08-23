@@ -90,7 +90,7 @@
           ids = [ "*" ]; 
           settings = {
           main = {
-            capslock = "toggle(number)";
+            capslock = "layer(number)";
           };
           number = {
             a = "1";
@@ -123,4 +123,8 @@
     MatchName=keyd virtual keyboard
     AttrKeyboardIntegration=internal
   '';
+
+  environment.variables = {
+    ROC_ENABLE_PRE_VEGA = "1"; 
+  };
 }

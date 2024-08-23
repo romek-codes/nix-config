@@ -61,7 +61,7 @@ let
     "browser.search.widget.inNavBar" = true;
 
     "browser.shell.checkDefaultBrowser" = false;
-    "browser.startup.homepage" = "https://nixos.org";
+    "browser.startup.homepage" = "about:robots";
     "browser.tabs.loadInBackground" = true;
     "browser.urlbar.placeholderName" = "DuckDuckGo";
     "browser.urlbar.showSearchSuggestionsFirst" = false;
@@ -82,7 +82,7 @@ let
     "general.autoScroll" = true;
     "general.useragent.locale" = "en-US";
 
-    "extensions.activeThemeID" = "nicothin-space@mozilla.org";
+    "extensions.activeThemeID" = "tokyonight_vim@mozilla.org";
 
     "extensions.extensions.activeThemeID" = "nicothin-space@mozilla.org";
     "extensions.update.enabled" = false;

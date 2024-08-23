@@ -1,17 +1,20 @@
 * {
-  font-size: 20px;
+  font-size: 16px;
   font-family: monospace;
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0.5);
-  color: #fdf6e3;
+  background: rgba(26, 27, 38, 1);
+  color: #C0CAF5;
+  border: none;
+  border-radius: 0px;
+  /* padding: 20px; */
 }
 
 #custom-right-arrow-dark,
 #custom-left-arrow-dark {
   /* color: #1a1a1a; */
-  color: rgba(0, 0, 0, 0.5);
+  /* color: rgba(0, 0, 0, 0.5); */
 }
 
 #custom-right-arrow-light,
@@ -28,7 +31,7 @@ window#waybar {
 
 /* the info displayed by playerctl */
 #custom-mpris {
-  color: #2aa198;
+  color: #04982C;
   padding: 5px 5px;
 }
 
@@ -56,20 +59,20 @@ window#waybar {
 #language,
 #window {
   /* background: #1a1a1a; */
-  background: rgba(0, 0, 0, 0.5);
+  /* background: rgba(0, 0, 0, 0); */
 }
 
 #workspaces button {
   padding: 0 2px;
-  color: #fdf6e3;
+  color: #C0CAF5;
 }
 
 #workspaces button.active {
-  color: #268bd2;
+  color: #7AA2F7
 }
 
 #workspaces button.focused {
-  color: #268bd2;
+  color: #7AA2F7;
 }
 
 #workspaces button:hover {
@@ -84,23 +87,23 @@ window#waybar {
 }
 
 #pulseaudio {
-  color: #268bd2;
+  color: #7AA2F7
 }
 
 #memory {
-  color: #2aa198;
+  color: #E8AB53;
 }
 
 #cpu {
-  color: #6c71c4;
+  color: #FF00D2;
 }
 
 #battery {
-  color: #859900;
+  color: #64BAAE;
 }
 
 #disk {
-  color: #b58900;
+  color: #04982c;
 }
 
 #clock,

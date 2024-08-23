@@ -44,6 +44,7 @@
     '';
 
     initExtra = ''
+      eval $(thefuck --alias)
 
       # API KEYS
       export GROQ_API_KEY=
