@@ -55,7 +55,10 @@ let
     unzip
     gnumake
     gcc
-    croc
+    php # Laravel <3
+    php83Packages.composer
+    dbeaver-bin # DBMS
+    croc # File transfer
 
     # Games
     (lutris.override {
@@ -134,35 +137,41 @@ in
 
     xdg.configFile."hypr/monitors.conf".text = ''
       # TODO: Figure out how to handle this automatically
-      monitor = DP-1,preferred,1080x0,1 # PC Main
-      monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
-      monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1 # laptop-built in
-      monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
-      monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
-
+      # PC
+      monitor=HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
+      monitor=DP-1,preferred,1080x0,1
+      # Laptop
+      # monitor=eDP-1,preferred,1080x0,1
+      # monitor=DP-2,1920x1080,0x43,1,transform,1 # Iiyama vertical
       monitor=,preferred,auto,1
     '';
+
+  programs.hypr-binds = {
+    enable = true;
+    settings.dispatch = true;
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
     extraConfig = (builtins.readFile ./hyprland.conf) + ''
-      bind=SUPER,P,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
-      bind=SUPER,TAB,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
-      bind=SUPER,C,exec,${lib.exe pkgs.hyprpicker} --autocopy
-      bind=SUPER,A,exec,${gblast} save area
-      bind=SUPER,S,exec,${gblast} save screen
-      bind=SUPERCTRL,L,exec,${lib.exe pkgs.hyprlock}
+      bindd=,F1,Show keybindings,exec,hypr-binds
+      bindd=SUPER,P,Launch a program,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
+      bindd=SUPER,TAB,Show open windows,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
+      bindd=SUPER,C,Color picker,exec,${lib.exe pkgs.hyprpicker} --autocopy
+      bindd=SUPER,A,Screenshot area,exec,${gblast} save area
+      bindd=SUPER,S,Screenshot screen(s),exec,${gblast} save screen
+      bindd=SUPERCTRL,L,Lock screen,exec,${lib.exe pkgs.hyprlock}
       # audio volume bindings
-      bindel=,XF86AudioRaiseVolume,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+
-      bindel=,XF86AudioLowerVolume,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-
-      bindl=,XF86AudioMute,exec,${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle
+      binddel=,XF86AudioRaiseVolume,Raise volume 󰝝 ,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+
+      binddel=,XF86AudioLowerVolume,Lower volume 󰝞 ,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-
+      binddl=,XF86AudioMute,Toggle mute 󰝟 ,exec,${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle
 
       ${workspaceConf { monitor = "${scripts.extMonitor}"; }}
 
       exec-once=${lib.exe scripts.monitorInit}
-      exec-once=${lib.exe pkgs.hypr-monitor-attached} ${lib.exe scripts.monitorAdded} ${lib.exe scripts.monitorRemoved}
+      exec-once=${lib.exe pkgs.hyprland-monitor-attached} ${lib.exe scripts.monitorAdded} ${lib.exe scripts.monitorRemoved}
       exec-once=${lib.exe pkgs.hyprpaper}
       exec-once=${pkgs.pyprland}/bin/pypr
       exec-once=${pkgs.blueman}/bin/blueman-applet

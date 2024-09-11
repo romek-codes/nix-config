@@ -14,19 +14,19 @@ prev2 = "movefocus u"
 style = ["opacity 1", "bordercolor rgb(FFFF00)"]
 captive_focus = true
 
-# [scratchpads.filemanager]
-# animation = ""
-# command = "nemo"
-# class = "nemo"
-# lazy = false
-# size = "60% 60%"
-# margin = 0
-# skip_windowrules = ["aspect", "workspace"]
+[scratchpads.filemanager]
+animation = ""
+command = "nemo"
+class = "nemo"
+lazy = false
+size = "60% 60%"
+margin = 0
+skip_windowrules = ["aspect", "workspace"]
 
-# [scratchpads.musicplayer]
-# animation = ""
-# command = "spotify"
-# class = "Spotify"
-# lazy = true
-# size = "70% 70%"
-# margin = 0
+[scratchpads.musicplayer]
+animation = ""
+command = "spotify"
+class = "Spotify"
+lazy = true
+size = "70% 70%"
+margin = 0

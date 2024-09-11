@@ -42,11 +42,8 @@ vim.diagnostic.config({ virtual_text = false })
 local Path = require("plenary.path")
 
 local workspacePaths = {
-  { name = "personal", path = "/media/romek/HDD 930GB/notes/personal" },
-  { name = "personal", path = "/mnt/DE62EBAD62EB891B/notes/personal/" },
-  { name = "work",     path = "/mnt/DE62EBAD62EB891B/notes/work" },
-  { name = "work",     path = "/media/romek/HDD 930GB/notes/work" },
-  { name = "work",     path = "/mnt/c/Users/Roman/notes/work" }
+  { name = "personal", path = "/mnt/hdd-1tb/notes/personal" },
+  { name = "work",     path = "/mnt/hdd-1tb/notes/work" },
 }
 
 local workspaces = {}
@@ -62,18 +59,6 @@ end
 
 lvim.plugins = {
   {
-    'romgrk/todoist.nvim'
-  },
-  {
-    'MagicDuck/grug-far.nvim',
-    config = function()
-      require('grug-far').setup({});
-    end
-  },
-  {
-    'sindrets/diffview.nvim'
-  },
-  {
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function() require("lsp_lines").setup() end
   },
@@ -85,21 +70,21 @@ lvim.plugins = {
     config = true,
     version = "*"
   },
-  -- {
-  --   "epwalsh/obsidian.nvim",
-  --   version = "*",
-  --   opts = {
-  --     workspaces = workspaces,
-  --     ui = {
-  --       enable = false,
-  --     }
-  --   },
-  --   lazy = false,
-  --   ft = "markdown",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim"
-  --   },
-  -- },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    opts = {
+      workspaces = workspaces,
+      ui = {
+        enable = false,
+      }
+    },
+    lazy = false,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+  },
   {
     'stevearc/oil.nvim',
     opts = {},
@@ -120,8 +105,22 @@ lvim.plugins = {
   },
   {
     'brenoprata10/nvim-highlight-colors'
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
   }
-
 }
 require('nightfox').setup()
 lvim.colorscheme = "carbonfox"
@@ -146,7 +145,9 @@ vim.keymap.set(
 --   p = { function()
 --     lua require('neogen').generate()
 --   ]])
+--
 --   end, "Generate documentation" },
 -- }
+--
 -- TODO: Setup obsidian commands to search in all vaults.
 -- :ObsidianSearch, :ObsidianOpen

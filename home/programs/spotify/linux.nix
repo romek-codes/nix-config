@@ -132,7 +132,7 @@ in
       })
       (fetchurl {
         url = "https://spotx-official.github.io/SpotX-Bash/spotx.sh";
-        hash = "sha256-UECjvroOoCXHqdVaN1ObzUM2PxRag+yKyyJNieWZgO4=";
+        hash = "sha256-qoM45pjzKjz1MZRhknQvQl65WeX4QVHAOm0jd/weXbY=";
       })
     ];
 

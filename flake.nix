@@ -102,6 +102,11 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    hypr-binds-flake = {
+      url = github:gvolpe/hypr-binds;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
