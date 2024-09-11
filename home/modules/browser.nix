@@ -8,7 +8,7 @@ with lib;
   options.programs.browser = {
     settings.dpi = mkOption {
       type = types.str;
-      default = "0";
+      default = "1.5";
     };
   };
 }

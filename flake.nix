@@ -100,6 +100,8 @@
       url = "github:shezdy/hyprsplit?ref=v0.41.2";
       inputs.hyprland.follows = "hyprland";
     };
+
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = inputs:

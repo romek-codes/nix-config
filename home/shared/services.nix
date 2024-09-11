@@ -21,5 +21,6 @@ in
   ../services/dunst
   ../services/gpg-agent
   ../services/udiskie
+  ../services/wlsunset
   more
 ]

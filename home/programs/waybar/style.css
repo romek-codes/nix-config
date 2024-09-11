@@ -4,8 +4,8 @@
 }
 
 window#waybar {
-  background: rgba(26, 27, 38, 1);
-  color: #C0CAF5;
+  background: #161616;
+  color: #f2f4f8;
   border: none;
   border-radius: 0px;
   /* padding: 20px; */
@@ -31,7 +31,7 @@ window#waybar {
 
 /* the info displayed by playerctl */
 #custom-mpris {
-  color: #04982C;
+  color: #04982c;
   padding: 5px 5px;
 }
 
@@ -64,15 +64,15 @@ window#waybar {
 
 #workspaces button {
   padding: 0 2px;
-  color: #C0CAF5;
+  color: #c0caf5;
 }
 
 #workspaces button.active {
-  color: #7AA2F7
+  color: #7aa2f7;
 }
 
 #workspaces button.focused {
-  color: #7AA2F7;
+  color: #7aa2f7;
 }
 
 #workspaces button:hover {
@@ -87,19 +87,19 @@ window#waybar {
 }
 
 #pulseaudio {
-  color: #7AA2F7
+  color: #7aa2f7;
 }
 
 #memory {
-  color: #E8AB53;
+  color: #e8ab53;
 }
 
 #cpu {
-  color: #FF00D2;
+  color: #ff00d2;
 }
 
 #battery {
-  color: #64BAAE;
+  color: #64baae;
 }
 
 #disk {

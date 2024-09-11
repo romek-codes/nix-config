@@ -2,7 +2,7 @@
 
 let
   inherit (specialArgs) hidpi;
-  fontSize = if hidpi then "14" else "10";
+  fontSize = if hidpi then "12" else "10";
 in
 {
   # lightweight wayland terminal emulator
@@ -13,15 +13,15 @@ in
       main = {
         shell = "${pkgs.zsh}/bin/zsh";
         font = "JetBrainsMono Nerdfont:size=${fontSize}";
-        pad = "6x6";
+        pad = "0x0";
         dpi-aware = "yes";
         selection-target = "both";
       };
       colors = {
         # alpha = 0.5;
         alpha = 1;
-        background = "1A1B26";
-        foreground = "C0CAF5";
+        background = "161616";
+        foreground = "f2f4f8";
       };
     };
   };

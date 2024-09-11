@@ -82,9 +82,9 @@ let
     "general.autoScroll" = true;
     "general.useragent.locale" = "en-US";
 
-    "extensions.activeThemeID" = "tokyonight_vim@mozilla.org";
+    "extensions.activeThemeID" = "nightfox-carbon@mozilla.org";
 
-    "extensions.extensions.activeThemeID" = "nicothin-space@mozilla.org";
+    "extensions.extensions.activeThemeID" = "nightfox-carbon@mozilla.org";
     "extensions.update.enabled" = false;
     "extensions.webcompat.enable_picture_in_picture_overrides" = true;
     "extensions.webcompat.enable_shims" = true;

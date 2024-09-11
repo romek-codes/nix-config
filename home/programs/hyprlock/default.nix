@@ -24,8 +24,8 @@
 
     image {
         monitor =
-        path = ${../hyprpaper/astronaut-blackhole.jpg}
-        size = 300 # lesser side if not 1:1 ratio
+        path = ${../hyprpaper/crow.png}
+        size = 600 # lesser side if not 1:1 ratio
         rounding = -1 # negative values mean circle
         border_size = 4
         border_color = rgb(221, 221, 221)

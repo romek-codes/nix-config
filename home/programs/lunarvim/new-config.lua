@@ -62,18 +62,6 @@ end
 
 lvim.plugins = {
   {
-    'romgrk/todoist.nvim'
-  },
-  {
-    'MagicDuck/grug-far.nvim',
-    config = function()
-      require('grug-far').setup({});
-    end
-  },
-  {
-    'sindrets/diffview.nvim'
-  },
-  {
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function() require("lsp_lines").setup() end
   },
@@ -85,21 +73,21 @@ lvim.plugins = {
     config = true,
     version = "*"
   },
-  -- {
-  --   "epwalsh/obsidian.nvim",
-  --   version = "*",
-  --   opts = {
-  --     workspaces = workspaces,
-  --     ui = {
-  --       enable = false,
-  --     }
-  --   },
-  --   lazy = false,
-  --   ft = "markdown",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim"
-  --   },
-  -- },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    opts = {
+      workspaces = workspaces,
+      ui = {
+        enable = false,
+      }
+    },
+    lazy = false,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+  },
   {
     'stevearc/oil.nvim',
     opts = {},
@@ -138,6 +126,7 @@ vim.keymap.set(
   require("lsp_lines").toggle,
   { desc = "Toggle lsp_lines" }
 )
+
 
 -- TODO: Create command for neogen with which_key, to generate PHP DOCS
 -- :Neogen
