@@ -57,6 +57,7 @@ let
     gcc
     php # Laravel <3
     php83Packages.composer
+    nodejs
     dbeaver-bin # DBMS
     croc # File transfer
 

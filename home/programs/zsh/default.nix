@@ -50,7 +50,7 @@
       export GROQ_API_KEY=
 
       # PATH STUFF
-      export PATH="$HOME/.nvm/versions/node/:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/bin:$HOME/.local/bin:/mnt/c/Windows/System32:/mnt/c/Windows/SysWOW64:/opt/nvim-linux64/bin:$PATH"
+      export PATH="$HOME/.nvm/versions/node/:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/bin:$HOME/.local/bin:/mnt/c/Windows/System32:/mnt/c/Windows/SysWOW64:/opt/nvim-linux64/bin:$PATH:$HOME/.npm-global/bin:$PATH"
 
       # NVM setup
       export NVM_DIR="$([ -z "''${XDG_CONFIG_HOME-}" ] && printf %s "$HOME/.nvm" || printf %s "''${XDG_CONFIG_HOME}/nvm")"
