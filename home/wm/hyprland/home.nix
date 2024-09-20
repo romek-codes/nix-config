@@ -63,6 +63,9 @@ let
     # For use with my optmz python script.
     imagemagick # Image optimization
     ffmpeg # Video optimization
+    rofi-rbw-wayland # Rofi frontend for Bitwarden
+    rbw # Bitwarden CLI (needed for rofi-rbw)
+    pinentry # Needed by rbw
 
     # Games
     (lutris.override {
@@ -141,12 +144,13 @@ in
 
     xdg.configFile."hypr/monitors.conf".text = ''
       # TODO: Figure out how to handle this automatically
-      # PC
-      monitor=HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
-      monitor=DP-1,preferred,1080x0,1
-      # Laptop
-      # monitor=eDP-1,preferred,1080x0,1
-      # monitor=DP-2,1920x1080,0x43,1,transform,1 # Iiyama vertical
+      monitor = DP-1,preferred,1080x0,1 # PC Main
+      monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
+      monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,2 # laptop-built in
+      monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
+      monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
+      monitor = desc:Avolites Ltd HDTV,preferred,1920x0,1
+
       monitor=,preferred,auto,1
     '';
 
