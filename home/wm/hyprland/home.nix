@@ -60,6 +60,9 @@ let
     nodejs
     dbeaver-bin # DBMS
     croc # File transfer
+    # For use with my optmz python script.
+    imagemagick # Image optimization
+    ffmpeg # Video optimization
 
     # Games
     (lutris.override {
@@ -180,7 +183,8 @@ in
       exec-once=${lib.exe pkgs.pasystray}
     '';
     plugins = [
-      inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      # inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       # inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
     ];
     systemd = {

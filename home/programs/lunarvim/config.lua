@@ -59,7 +59,8 @@ lvim.plugins = {
     config = function()
       require('bruno').setup({
         collection_paths = {
-          { name = "Main", path = "/home/romek/Bruno" },
+          { name = "Nix",          path = "/home/romek/Bruno" },
+          { name = "Windows-work", path = "/mnt/c/Users/Roman/Documents/Bruno" },
         }
       })
     end
@@ -104,9 +105,15 @@ lvim.plugins = {
     opts = {},
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      -- "rcarriga/nvim-notify",
     }
-  }
+  },
+  {
+    'MagicDuck/grug-far.nvim',
+    config = function()
+      require('grug-far').setup({});
+    end
+  },
 }
 
 -- Nightfox and Highlight Colors Setup
@@ -136,8 +143,6 @@ require("noice").setup({
 })
 
 -- Keybindings
--- vim.keymap.set("", "<Leader>lh", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
-
 lvim.builtin.which_key.mappings["lp"] = {
   name = "PHP",
   g = { function() require('neogen').generate() end, "Generate documentation" },

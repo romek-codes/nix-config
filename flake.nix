@@ -88,7 +88,8 @@
     };
 
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=v0.41.2";
+      # url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=v0.43.0";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=main";
     };
 
     hyprland-plugins = {
@@ -96,15 +97,20 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit?ref=v0.41.2";
-      inputs.hyprland.follows = "hyprland";
+    # hyprsplit = {
+    #   url = "github:shezdy/hyprsplit?ref=v0.43.0";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
 
     hypr-binds-flake = {
-      url = github:gvolpe/hypr-binds;
+      url = "github:gvolpe/hypr-binds";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

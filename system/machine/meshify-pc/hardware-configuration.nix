@@ -24,11 +24,10 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/hdd-1tb" = {
-    device = "/dev/disk/by-uuid/DE62EBAD62EB891B";
-    fsType = "ntfs3";
-    options = [ "rw" "uid=1000" "gid=1000" "noatime" ];
-  };
+  fileSystems."/mnt/hdd-1tb" =
+    { device = "/dev/disk/by-uuid/c76ef377-fc79-47ee-b0c8-869184a82d90";
+      fsType = "ext4";
+    };
 
   swapDevices = [ ];
 
@@ -37,6 +36,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp8s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -32,6 +32,7 @@
       open = "xdg-open";
       v = "lvim .";
       lv = "lvim .";
+      duh = "du -ha -d 1 | sort -hr";
     };
 
 
