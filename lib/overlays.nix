@@ -91,9 +91,9 @@ let
     });
   };
 
-  spotifyOverlay = f: p: {
-      spotify = p.callPackage ../home/programs/spotify{};
-    };
+  # spotifyOverlay = f: p: {
+  #     spotify = p.callPackage ../home/programs/spotify{};
+  #   };
 
   in
 [
@@ -116,5 +116,5 @@ let
   buildersOverlay
   treesitterGrammarsOverlay
   schemaOverlay
-  spotifyOverlay
+  # spotifyOverlay
 ]

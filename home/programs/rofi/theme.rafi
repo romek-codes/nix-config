@@ -5,13 +5,13 @@
  *******************************************************************************/
 
 * {
-    font:             "JetBrainsMono Nerd Font 24";
+    font:             "JetBrainsMono Nerd Font 14";
 
-    bg0:     #2E3440;
-    bg1:     #3B4252;
-    fg0:     #D8DEE9;
+    bg0:     #161616;
+    bg1:     #0C0C0C;
+    fg0:     #F2F4F8;
 
-    accent-color:     #88C0D0;
+    accent-color:     #78A9FF;
     urgent-color:     #EBCB8B;
 
     background-color:   transparent;
@@ -24,7 +24,7 @@
 
 window {
     location:   center;
-    width:      480;
+    width:      600;
 
     background-color:   @bg0;
 }

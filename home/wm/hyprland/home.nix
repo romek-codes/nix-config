@@ -31,7 +31,6 @@ let
     wl-clipboard # clipboard support
     xwaylandvideobridge # screensharing bridge
     vesktop # Discord modded client with wayland support
-    spotify # Spotify, duh
     calibre # Ebook management software
     qdirstat # Storage management
     obsidian # Notes with obsidian.nvim <3
@@ -63,6 +62,7 @@ let
     # For use with my optmz python script.
     imagemagick # Image optimization
     ffmpeg # Video optimization
+
     rofi-rbw-wayland # Rofi frontend for Bitwarden
     rbw # Bitwarden CLI (needed for rofi-rbw)
     pinentry # Needed by rbw
@@ -99,6 +99,7 @@ in
     ../../programs/waybar
     ../../services/hypridle
     ../../programs/rofi
+    ../../programs/spicetify-nix
   ];
 
   home = {
@@ -146,7 +147,7 @@ in
       # TODO: Figure out how to handle this automatically
       monitor = DP-1,preferred,1080x0,1 # PC Main
       monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
-      monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,2 # laptop-built in
+      monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1.25 # laptop-built in
       monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
       monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
       monitor = desc:Avolites Ltd HDTV,preferred,1920x0,1

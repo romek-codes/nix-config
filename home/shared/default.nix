@@ -29,13 +29,11 @@ let
     ranger # terminal file explorer
     ripgrep # fast grep
     screenkey # shows keypresses on screen
-    # spotify # music player
     tdesktop # telegram messaging client
     tree # display files in a tree view
     vlc # media player
     xsel # clipboard support (also for neovim)
     lazygit # my preferred way of interacting with git (i'm lazy)
-    # spicetify-cli # commented out in favor of spicetify-nix (if i can get it working)
   ];
 in
 {

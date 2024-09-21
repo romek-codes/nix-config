@@ -78,7 +78,5 @@ in
   ../programs/yubikey
   ../programs/zathura
   ../programs/tmux
-  # ../programs/spotify
-  # ../programs/spicetify-nix
   more
 ]

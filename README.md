@@ -18,13 +18,21 @@
 | META + .           | Switch to next workspace                                  |
 | META + ,           | Switch to previous workspace                              |
 | META + CTRL + F    | Toggle file manager                                       |
-| META + CTRL + S    | Toggle music player                                       |
+| META + CTRL + S    | Toggle music player (spotify)                             |
 | META + F           | Toggle centered layout                                    |
 | META + H/L         | Navigate through windows in centered layout               |
 | META + K/J         | Navigate through windows in centered layout (alternate)   |
 | META + 1-0         | Switch to workspace 1-10                                  |
 | META + SHIFT + 1-0 | Move active window to workspace 1-10                      |
 | ALT + R            | Enter resize mode (use H/J/K/L to resize, CTRL+C to exit) |
+
+## Spotify specific shortcuts
+
+| Keybinding                      | Action            |
+| ------------------------------- | ----------------- |
+| CTRL + TAB / CTRL + SHIFT + TAB | Navigate sidebar  |
+| F                               | Jump mode         |
+| CTRL + K                        | Open quick search |
 
 # Notes
 

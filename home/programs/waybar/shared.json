@@ -80,14 +80,11 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume:2}%",
-    "format-bluetooth": "{icon}  {volume}%",
-    "format-muted": "MUTE",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "󰝟",
     "format-icons": {
       "headphones": "",
-      "default": [
-        "",
-        ""
-      ]
+      "default": ["", ""]
     },
     "scroll-step": 5,
     "on-click": "pulsemixer",
@@ -95,11 +92,11 @@
   },
   "memory": {
     "interval": 5,
-    "format": "Mem {}%"
+    "format": "  {}%"
   },
   "cpu": {
     "interval": 5,
-    "format": "CPU {usage:2}%"
+    "format": "  {usage:2}%"
   },
   "battery": {
     "states": {
@@ -108,17 +105,11 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", ""]
   },
   "disk": {
     "interval": 5,
-    "format": "Disk {percentage_used:2}%",
+    "format": " {percentage_used:2}%",
     "path": "/"
   },
   "tray": {
@@ -127,9 +118,7 @@
   },
   "custom/spotify": {
     "format": "{icon}",
-    "format-icons": [
-      "󰓇 "
-    ]
+    "format-icons": ["󰓇 "]
   },
   "custom/mpris": {
     "format": "{}",

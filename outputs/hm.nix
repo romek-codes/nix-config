@@ -4,6 +4,7 @@ with inputs;
 
 let
   sharedImports = [
+    inputs.spicetify-nix.homeManagerModules.default
     # neovim-flake.homeManagerModules.${system}.default
     ({ home.packages = extraPkgs; })
   ];

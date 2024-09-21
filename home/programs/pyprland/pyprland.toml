@@ -28,5 +28,5 @@ animation = ""
 command = "spotify"
 class = "Spotify"
 lazy = true
-size = "70% 70%"
+size = "100% 100%"
 margin = 0
