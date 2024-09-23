@@ -165,7 +165,7 @@ in
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
     extraConfig = (builtins.readFile ./hyprland.conf) + ''
-      bindd=,F1,Show keybindings,exec,hypr-binds
+      bindd=SUPER,F1,Show keybindings,exec,hypr-binds
       bindd=SUPER,P,Launch a program,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
       bindd=SUPER,TAB,Show open windows,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
       bindd=SUPER,C,Color picker,exec,${lib.exe pkgs.hyprpicker} --autocopy
