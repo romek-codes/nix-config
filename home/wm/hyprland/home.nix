@@ -45,6 +45,7 @@ let
     wlsunset # screen color temp manager (like f.lux)
     pass # for some password, like todoist.nvim api key
     nwg-look # gtk3 settings
+    tldr # tldr manpages
     amdvlk
     wget
     gcc
@@ -56,6 +57,7 @@ let
     gcc
     php # Laravel <3
     php83Packages.composer
+    tailwindcss-language-server # Tailwind LSP
     nodejs
     dbeaver-bin # DBMS
     croc # File transfer

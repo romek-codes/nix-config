@@ -29,13 +29,24 @@ lspconfig.eslint.setup({})
 lspconfig.intelephense.setup({})
 lspconfig.tailwindcss.setup({})
 lspconfig.volar.setup({})
+lspconfig.stimulus_ls.setup({})
 
 -- Null-LS Configuration
 local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup({ { name = "pint" }, { name = "lua_format" }, { name = "prettier" } })
+formatters.setup({
+  { name = "pint" },
+  { name = "blade-formatter" },
+  { name = "tlint" },
+  { name = "lua_format" },
+  { name = "prettier" }
+})
 
 local linters = require "lvim.lsp.null-ls.linters"
-linters.setup({ { name = "phpstan" }, { name = "luacheck" } })
+linters.setup({
+  { name = "phpstan" },
+  { name = "luacheck" },
+  { name = "tlint" }
+})
 
 -- Workspaces Configuration
 local Path = require("plenary.path")
@@ -167,7 +178,8 @@ lvim.builtin.which_key.mappings["o"] = {
   o = { "<cmd>ObsidianOpen<cr>", "Open" },
   t = { "<cmd>ObsidianTags<cr>", "Tags" },
   n = { "<cmd>ObsidianNew<cr>", "New note" },
-  b = { "<cmd>ObsidianBacklinks<cr>", "Backlinks" },
+  g = { "<cmd>ObsidianFollowLink<cr>", "Follow link" },
+  -- b = { "<cmd>ObsidianBacklinks<cr>", "Backlinks" },
 }
 
 lvim.builtin.which_key.mappings["n"] = {
