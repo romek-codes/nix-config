@@ -20,7 +20,7 @@ in
       colors = {
         # alpha = 0.5;
         alpha = 1;
-        background = "161616";
+        background = "0C0C0C";
         foreground = "f2f4f8";
       };
     };

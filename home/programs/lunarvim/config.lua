@@ -128,7 +128,16 @@ lvim.plugins = {
 }
 
 -- Nightfox and Highlight Colors Setup
-require('nightfox').setup()
+require('nightfox').setup({
+  palettes = {
+    carbonfox = {
+      bg1 = "#0C0C0C",
+      bg0 = "#0C0C0C",
+      bg3 = "#0C0C0C",
+      sel0 = "#0C0C0C",
+    },
+  },
+})
 require('nvim-highlight-colors').setup({})
 
 -- Noice Configuration
