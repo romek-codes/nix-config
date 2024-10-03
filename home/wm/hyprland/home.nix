@@ -46,13 +46,14 @@ let
     pass # for some password, like todoist.nvim api key
     nwg-look # gtk3 settings
     tldr # tldr manpages
+    peazip # for zip and rar files
     amdvlk
     wget
     gcc
     rustc
     cargo
     nil
-    unzip
+    unzip # some dev dep
     gnumake
     gcc
     php # Laravel <3
