@@ -117,29 +117,11 @@
       };
     };
 
-    # photoprism = {
-    #   enable = true;
-    #   port = 2342;
-    #   originalsPath = "/var/lib/private/photoprism/originals";
-    #   address = "0.0.0.0";
-    #   settings = {
-    #     PHOTOPRISM_ADMIN_USER = "admin";
-    #     PHOTOPRISM_ADMIN_PASSWORD = "admin";
-    #     PHOTOPRISM_DEFAULT_LOCALE = "en";
-    #     PHOTOPRISM_DATABASE_DRIVER = "mysql";
-    #     PHOTOPRISM_DATABASE_NAME = "photoprism";
-    #     PHOTOPRISM_DATABASE_SERVER = "/run/mysqld/mysqld.sock";
-    #     PHOTOPRISM_DATABASE_USER = "photoprism";
-    #     PHOTOPRISM_SITE_TITLE = "Romek's PhotoPrism";
-    #     PHOTOPRISM_NSFW_UPLOAD = "true";
-    #   };
-    # };
+    immich = {
+      enable = true;
+    };
 
-    # Not yet there.
-    # immich = {
-    #   enable = true;
-    #   # environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";
-    # };
+    postgresql.package = pkgs.postgresql_16;
 
     syncthing = {
         enable = true;

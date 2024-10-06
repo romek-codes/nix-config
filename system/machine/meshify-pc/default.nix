@@ -40,19 +40,6 @@
 
   services.sysprof.enable = true;
 
-  # services.mysql = {
-  #   enable = true;
-  #   package = pkgs.mariadb; 
-  #   dataDir = "/mnt/hdd-1tb/SyncthingMain/Personal/media/photoprism/mysql";
-  #   ensureDatabases = [ "photoprism" ];
-  #   ensureUsers = [ {
-  #     name = "photoprism";
-  #     ensurePermissions = {
-  #       "photoprism.*" = "ALL PRIVILEGES";
-  #     };
-  #   } ];
-  # };
-
   services.xserver = {
     videoDrivers = [ "amdgpu" ];
 
@@ -88,20 +75,6 @@
 
   powerManagement.enable = true;
   security.polkit.enable = true;
-
-  # Photoprism + Syncthing permissions
-  # system.activationScripts = {
-  #   mysqlPermissions = {
-  #     text = ''
-  #       chown -R mysql:mysqlshare /mnt/hdd-1tb/SyncthingMain/Personal/media/photoprism/mysql
-  #       chmod 771 /mnt/hdd-1tb/SyncthingMain/Personal/media/photoprism/mysql
-  #       find /mnt/hdd-1tb/SyncthingMain/Personal/media/photoprism/mysql -type d -exec chmod 771 {} \;
-  #       find /mnt/hdd-1tb/SyncthingMain/Personal/media/photoprism/mysql -type f -exec chmod 660 {} \;
-  #       chmod g+s /mnt/hdd-1tb/SyncthingMain/Personal/media/photoprism/mysql
-  #     '';
-  #     deps = [];
-  #   };
-  # };
 
   programs = {
     # I guess this can't be installed using home-manager, at least not in a straight forward way..

@@ -151,16 +151,11 @@ in
   programs.zsh.enable = true;
 
 
-  # Permissions for mysql and user to own data directory in syncthing.
-  # users.groups.mysqlshare = {};
-  # users.users.mysql.extraGroups = [ "mysqlshare" ];
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.romek = {
     isNormalUser = true;
     # wheel for 'sudo', uucp for bazecor to access ttyAMC0 (keyboard firmware updates)
     extraGroups = [ "docker" "networkmanager" "wheel" "scanner" "lp" "uucp" "video" "input" ];
-    # "mysqlshare" <- Group for Photoprism + Syncthing, if I don't like immich for some reason.
     shell = pkgs.zsh;
   };
 

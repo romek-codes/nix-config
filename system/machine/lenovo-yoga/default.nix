@@ -29,21 +29,6 @@
 
   services.sysprof.enable = true;
 
-  # TODO: Will not be needed after switch to immich from photoprism.
-  # Modify dataDir to folder where photoprism/mysql dir is located on lenovo-yoga.
-  # services.mysql = {
-  #   enable = true;
-  #   package = pkgs.mariadb; 
-  #   dataDir = "/SyncthingMain/Personal/media/photoprism/mysql";
-  #   ensureDatabases = [ "photoprism" ];
-  #   ensureUsers = [ {
-  #     name = "photoprism";
-  #     ensurePermissions = {
-  #       "photoprism.*" = "ALL PRIVILEGES";
-  #     };
-  #   } ];
-  # };
-
   services.xserver = {
     videoDrivers = [ "amdgpu" ];
 
