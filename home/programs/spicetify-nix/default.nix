@@ -5,8 +5,8 @@ in
 {
   programs.spicetify = {
     enable = true;
-    # text, dribbblish
-    theme = spicePkgs.themes.orchis;
+    # text, dribbblish, orchis 
+    theme = spicePkgs.themes.text;
     enabledExtensions = with spicePkgs.extensions; [
       keyboardShortcut
       adblock

@@ -7,10 +7,82 @@ vim.diagnostic.config({ virtual_text = false })
 -- LunarVim Settings
 lvim.format_on_save.enabled = true
 lvim.colorscheme = "carbonfox"
-lvim.builtin.nvimtree.setup.view.side = "right"
+-- lvim.builtin.nvimtree.setup.view.side = "right"
+lvim.builtin.nvimtree.active = false
+local alpha = require("alpha")
+local dashboard = require("alpha.themes.dashboard")
+
+-- Taken from https://github.com/johnend/dots/blob/8fbde090a6dc4a334fc63e59c35ec727e92407ad/.config/nvim/lua/core/config/dashboard/headers.lua
+local headerKing = {
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡕⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡎⠙⠇⠧⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⢠⠤⠁⢸⡄⠀⠉⣇⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⣆⡐⠊⢠⣨⣺⠔⣀⡤⢾⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⢤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡨⠇⠀⠀⢀⢸⣇⠀⣉⠀⠈⠾⡆⠀⠀⠀⠀⠀⡠⡄⠀⠀⠀⠀⠀⠀⠀⠀⢠⣀⠚⠈⠰⠸⢥⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⢸⡉⠀⠀⠠⢤⣾⣗⠅⠐⠒⠂⠈⢳⡄⠀⠀⠀⡔⠁⣷⡀⠀⠀⠀⠀⠀⠀⢀⠾⡈⠀⣀⠇⠀⢚⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⡈⣽⣅⠀⠀⢝⣿⣯⠓⠂⠀⠠⢀⣀⣈⣶⣤⣸⠀⢀⢿⠀⠀⠀⠀⢀⡔⠊⠀⠀⠛⠀⣿⢏⣡⡤⢽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⠀⡇⣚⣷⣟⠉⢹⠏⠀⣳⣦⣬⣲⣶⣿⣿⣏⡑⢝⠀⠨⠧⠤⡄⠠⢯⣀⠀⠈⠢⡀⡀⢦⡏⠈⠁⠀⢉⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⡰⢺⡔⢯⣷⡦⡌⣤⣬⢿⣿⣿⠻⡖⠯⣿⣻⣿⠈⡸⢀⣴⣶⣼⢄⣸⣢⠀⠈⠢⡐⣡⡼⢀⡠⢤⣐⠀⢹⡀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠀⢹⡿⡷⣾⡿⡱⠡⡻⣿⢿⣿⡿⢋⢳⣿⣿⣟⣯⠥⣥⣹⣿⣻⡶⢮⣸⣿⡶⢄⠀⢱⣿⡫⠕⡐⡂⠐⠁⠊⠒⡆⠀⠀⠔⣼⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⠀⠀⠀⠠⡚⣢⠓⠈⠒⣁⣄⠈⠂⠭⠥⠕⠋⠑⠍⢫⡋⠧⠚⠡⠻⣿⣿⡷⢺⣧⣿⣽⣤⣨⢹⠟⠉⠁⣀⣠⠰⠒⠉⠉⠁⢀⠎⠀⣹⠀⠀⠀⠀⠀⢀⡴⡟",
+  "    ⠀⠀⠀⠀⠀⠀⢠⢉⡠⡳⠕⠮⢐⠪⠕⠢⠦⢔⣐⠴⣦⣄⣀⣀⠤⣦⡀⠁⠒⠐⠒⢎⠺⣟⣮⠿⢃⣾⣻⣗⣦⣾⡿⣢⢀⣠⡂⠑⠞⠀⣠⡟⠀⠀⠀⢀⣼⢾⡵⠀",
+  "    ⠀⠀⠀⠀⠀⠀⣮⢋⠰⠶⠶⠆⣓⠁⠪⠆⠰⠶⠀⠙⢀⢩⢀⣀⢭⡇⣋⠒⠐⠒⢱⢄⠈⠒⠒⠈⡁⠹⠘⣜⢿⣵⣏⣱⢚⣮⣽⡆⠀⢈⣿⡁⠀⠀⢠⣫⠫⣴⠃⠀",
+  "    ⠀⠀⠀⠀⠀⡘⢀⣠⡴⣖⣒⡺⠮⢿⡒⠲⣶⡒⠛⣛⣶⣤⠤⢅⢀⣂⡘⠐⠒⠈⠃⣑⡉⢥⡬⠍⡽⡄⠑⠠⢁⠢⠭⣸⠽⣯⣏⡧⣾⣾⢴⡿⠀⢠⢃⢯⣼⠇⠀⠀",
+  "    ⠀⠀⠀⡠⠔⠞⡿⢫⢪⠂⣱⠎⣱⠄⠈⡢⠀⠉⠉⣠⠤⠐⠒⠒⠒⢒⣒⡒⠾⣿⠦⣌⣁⣑⠣⡟⢈⢊⢖⡠⠤⠤⡄⠑⣷⠿⢯⡛⣷⡿⣲⣩⡭⡙⢜⢗⡏⠀⠀⠀",
+  "    ⠀⢠⠮⡤⢀⡀⠉⠲⣕⡮⠕⢋⡠⠒⢁⡠⠴⠒⠄⠙⠳⣤⡈⠫⣓⢖⠒⢪⡢⡀⠑⢌⠙⢟⠛⠶⢤⣁⠊⠅⣜⠗⡽⣴⢪⢟⢽⣯⣿⠀⣻⣾⡿⣝⢑⣿⠁⠀⠀⠀",
+  "    ⣰⡿⢸⠡⡏⣰⣵⣶⡿⠿⠮⠿⠾⠾⠷⠦⢤⡤⡀⣀⣠⣄⡙⢢⣈⠂⠍⠛⠒⠚⢀⠨⠇⠀⠑⠒⠉⠉⣙⣒⣺⣄⡙⠐⢛⣭⣷⡈⠓⢿⣿⡏⠄⣧⣽⡃⠀⠀⠀⠀",
+  "    ⡷⣸⢐⣸⣿⡻⠩⣒⡐⢈⡍⠉⠉⠁⠁⠈⠀⠈⠀⠀⠉⠈⠉⠙⠛⢶⣴⣶⣖⣊⣁⣀⡤⠔⢄⠀⢟⠉⢩⠤⠬⣩⡙⢫⣉⢛⢿⣭⠶⣖⢮⡿⣶⢿⣽⠀⠀⠀⠀⠀",
+  "    ⢺⣻⣤⣿⠇⠀⠀⠀⠙⢿⠆⠀⠀⠀⢰⣥⣶⣶⣤⣦⣦⣄⣄⡀⠀⠀⠱⡇⠉⠋⠛⠟⠷⣖⣬⣦⡀⢱⡄⠩⡭⡭⢣⠈⢟⠅⡯⣙⣽⣿⡷⣽⣾⢷⠇⠀⠀⠀⠀⠀",
+  "    ⠀⠙⢿⠏⠀⠀⡀⠠⣀⠀⠓⡄⠀⠀⠁⢻⡿⣿⣿⣿⣿⣿⣻⣿⣷⣄⠀⢿⠀⠀⠂⠀⠀⠈⠒⠩⢛⢻⢽⣆⣉⢉⢉⡠⠼⠀⠑⠉⠘⣿⣿⢯⣯⣾⠀⠀⠀⠀⠀⠀",
+  "    ⠀⢀⠊⢠⣰⣶⣿⣿⢿⣦⠀⠇⠀⠒⡀⠀⣻⢻⣿⣷⡿⣾⣾⣿⣿⣿⣆⠹⣄⠀⠴⣖⠂⠐⠁⠊⠐⠀⢑⡡⢝⠧⣄⣤⠴⠴⡄⠸⡉⢤⣝⢝⢗⡇⠀⠀⠀⠀⠀⠀",
+  "    ⠀⢸⢀⣿⢟⡿⣿⢿⣻⠋⠀⡀⠀⠀⣯⣚⣏⣞⡿⡵⡽⣟⣿⢿⣿⣿⡇⠀⠹⣷⠧⣫⠀⠀⠀⠀⠠⠂⠀⠀⠀⠈⠊⠝⡶⣦⣸⠀⢣⢸⣿⡆⡿⣅⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠘⡴⢿⢽⢹⣿⡞⣿⣇⠠⠁⠀⠀⠑⢷⣎⣺⣱⢿⣻⣟⣯⣿⣯⣿⡇⠀⣤⡇⣺⡗⡇⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢝⢿⣼⣼⠿⣿⢹⢽⡆⠀⠀⠀⠀⠀",
+  "    ⠀⠀⢨⠘⢮⣽⣿⠿⣿⣿⣷⠀⠐⡄⠀⠀⠋⠿⣿⡿⣿⡿⣯⢽⣿⠞⠁⠀⣼⣿⡼⣛⡋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠫⣫⣿⡔⡺⣺⢿⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠜⢀⢷⠅⠀⠀⣿⡿⣿⡇⠀⡇⢀⠀⢀⣀⠀⠈⢉⠓⠛⠉⠀⠀⠀⠀⠈⠛⠛⠿⣺⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠙⣿⣿⢾⡱⡍⡇⠀⠀⠀⠀",
+  "    ⠀⠰⠁⣘⠋⠀⠀⠀⢻⠙⣿⡇⠀⠀⠀⠐⣠⠿⠃⠀⠀⠉⠹⡖⠀⠀⠀⠀⠀⠀⠀⠀⡀⠑⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⢿⣿⣹⢎⠃⠀⠀⠀⠀",
+  "    ⠀⠈⠀⠸⠀⠀⠀⠀⠼⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠈⡄⠀⠀⠀⣀⣴⠓⠒⢻⣯⡃⡫⠒⠠⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠜⢼⣟⣏⣝⠍⠀⠀⠀⠀⠀",
+  "    ⠀⢘⠠⣤⠀⢀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠑⠀⣀⡼⣿⡻⣝⢿⣚⣯⢵⣞⣆⢀⣤⣤⡄⠀⠐⠠⢄⢀⣀⠄⢞⣜⡹⣇⣿⠋⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠈⠒⠛⢧⠎⠀⠀⠀⠀⠀⠀⠈⡟⠆⠀⠀⠀⠀⢀⠎⠉⢱⣢⣤⡾⠻⢿⣟⠿⠉⠀⡼⢀⠙⠙⣟⣼⠟⠖⡟⠀⠀⡄⠀⡁⠀⢁⣇⡓⣧⣿⡝⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⢀⢎⢽⢰⠃⢸⠂⢰⠆⠀⡀⠀⠀⠀⠀⠀⡈⠀⠀⢠⡿⠀⢀⠀⢢⠀⠀⢀⣼⠳⣪⣎⡳⠊⢸⠄⠀⠂⠀⠀⡇⢀⠑⡷⣫⢞⣷⣯⠟⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⡎⣰⣤⣾⢴⣼⣤⣾⣀⣸⠃⡴⠤⢦⠀⣄⠧⢴⢶⣿⣾⠀⠈⡆⠀⠃⠀⢰⣝⣾⡿⡗⡿⠈⡉⠀⣀⣴⣀⣴⢯⠝⣨⡧⣟⣾⣏⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⢰⢹⠸⠁⠇⡌⢰⠁⣟⠉⢻⠚⠷⡦⠿⣤⣽⣤⣼⢿⣿⡿⠀⡀⠘⠀⠀⠀⣽⣺⣫⣪⣮⢷⣄⣦⣯⣾⣿⡝⢇⢢⢼⣿⣽⣾⡿⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⢸⠀⠄⠀⡄⢂⠨⢄⡉⠈⡉⠀⠘⠃⠀⣿⠁⠴⠿⠞⢫⠃⠀⡆⠀⠀⢠⢰⢿⣵⣭⠧⢅⣻⠻⡛⢗⣿⢿⣽⣿⣺⣿⣻⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠀⡇⠁⠀⠋⠘⠀⢰⠃⠀⠃⠀⠈⠀⠀⠀⠀⠀⠀⠔⠁⠀⣼⠀⠀⠰⠉⢰⣿⣿⣪⣿⣛⣶⣿⣯⡻⣷⣻⣟⣿⢟⡻⢟⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⢰⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⠿⠀⠀⠀⢠⣾⣫⣷⣿⣿⣿⣿⣿⣯⡿⠯⠟⠛⠛⠛⠚⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⢸⠀⠀⢀⡀⣀⠀⣀⠀⢀⣀⣀⣀⠴⠤⠦⠄⢄⣄⢂⣬⣀⣀⣀⣠⡴⣟⢝⠯⣛⠭⣯⡽⢋⠐⠀⠀⠂⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⡆⣐⣶⡷⣿⣾⣿⣶⡶⣶⣶⣾⣷⠿⠿⣽⣿⣿⣟⣿⣭⣿⣿⢿⣿⣽⣭⢵⣫⣼⡙⠐⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "    ⠀⠀⠈⠉⠛⠛⠫⢽⢿⣞⣔⣿⡿⠋⠃⠁⠈⠐⠙⠩⠻⠓⠏⠛⠱⠉⠍⠍⠁⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "                                                                ",
+  "                                                                ",
+  "                                                                ",
+}
+lvim.builtin.alpha.dashboard.section.header.val = headerKing
+
+lvim.builtin.alpha.dashboard.section.footer.val = {
+  "romek.codes"
+}
+lvim.builtin.alpha.dashboard.section.header.opts = {
+  hl = "Normal",
+  position = "center",
+}
+
+-- Set menu
+lvim.builtin.alpha.dashboard.section.buttons.val = {
+  dashboard.button("f", "Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
+  dashboard.button("r", "Recent", ":Telescope oldfiles<CR>"),
+}
+
+lvim.builtin.which_key.setup = {
+  preset = "helix",
+}
+
+-- Disable folding on alpha buffer
+vim.cmd([[
+    autocmd FileType alpha setlocal nofoldenable
+]])
 
 -- LSP Configuration
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({})
 lspconfig.tsserver.setup({
@@ -32,27 +104,31 @@ lspconfig.volar.setup({})
 lspconfig.stimulus_ls.setup({})
 
 -- Null-LS Configuration
-local formatters = require "lvim.lsp.null-ls.formatters"
+local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
   { name = "pint" },
   { name = "blade-formatter" },
   { name = "tlint" },
   { name = "lua_format" },
-  { name = "prettier" }
+  { name = "prettier" },
 })
 
-local linters = require "lvim.lsp.null-ls.linters"
+local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
   { name = "phpstan" },
   { name = "luacheck" },
-  { name = "tlint" }
+  { name = "tlint" },
 })
 
 -- Workspaces Configuration
 local Path = require("plenary.path")
 local workspacePaths = {
+  -- meshify
   { name = "personal", path = "/mnt/hdd-1tb/notes/personal" },
   { name = "work",     path = "/mnt/hdd-1tb/notes/work" },
+  -- lenovo-yoga
+  { name = "personal", path = "/home/romek/notes/personal" },
+  { name = "work",     path = "/home/romek/notes/work" }
 }
 local workspaces = {}
 for _, workspaceInfo in ipairs(workspacePaths) do
@@ -65,26 +141,28 @@ end
 -- Plugin Configuration
 lvim.plugins = {
   {
-    'romek-codes/bruno.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+    "romek-codes/bruno.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
     config = function()
-      require('bruno').setup({
+      require("bruno").setup({
         collection_paths = {
-          { name = "Nix",          path = "/home/romek/Bruno" },
+          { name = "Nix",          path = "~/Bruno" },
           { name = "Windows-work", path = "/mnt/c/Users/Roman/Documents/Bruno" },
-        }
+        },
       })
-    end
+    end,
   },
   {
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    config = function() require("lsp_lines").setup() end
+    config = function()
+      require("lsp_lines").setup()
+    end,
   },
   { "EdenEast/nightfox.nvim" },
   {
     "danymat/neogen",
     config = true,
-    version = "*"
+    version = "*",
   },
   {
     "epwalsh/obsidian.nvim",
@@ -98,18 +176,20 @@ lvim.plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function() require("oil").setup() end
+    config = function()
+      require("oil").setup()
+    end,
   },
   {
-    'MeanderingProgrammer/markdown.nvim',
+    "MeanderingProgrammer/markdown.nvim",
     main = "render-markdown",
     opts = { bullet = { right_pad = 10 } },
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
   },
-  { 'brenoprata10/nvim-highlight-colors' },
+  { "brenoprata10/nvim-highlight-colors" },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -117,28 +197,27 @@ lvim.plugins = {
     dependencies = {
       "MunifTanjim/nui.nvim",
       -- "rcarriga/nvim-notify",
-    }
+    },
   },
   {
-    'MagicDuck/grug-far.nvim',
+    "MagicDuck/grug-far.nvim",
     config = function()
-      require('grug-far').setup({});
-    end
+      require("grug-far").setup({})
+    end,
   },
+  { 'echasnovski/mini.files', version = false },
 }
 
 -- Nightfox and Highlight Colors Setup
-require('nightfox').setup({
+require("nightfox").setup({
   palettes = {
     carbonfox = {
       bg1 = "#0C0C0C",
-      bg0 = "#0C0C0C",
-      bg3 = "#0C0C0C",
-      sel0 = "#0C0C0C",
     },
   },
 })
-require('nvim-highlight-colors').setup({})
+require("nvim-highlight-colors").setup({})
+require('mini.files').setup()
 
 -- Noice Configuration
 require("noice").setup({
@@ -162,16 +241,41 @@ require("noice").setup({
   },
 })
 
+
 -- Keybindings
 lvim.builtin.which_key.mappings["lp"] = {
   name = "PHP",
-  g = { function() require('neogen').generate() end, "Generate documentation" },
-  c = { function() require('neogen').generate({ type = "class" }) end, "Generate class documentation" },
-  f = { function() require('neogen').generate({ type = "func" }) end, "Generate function documentation" },
+  g = {
+    function()
+      require("neogen").generate()
+    end,
+    "Generate documentation",
+  },
+  c = {
+    function()
+      require("neogen").generate({ type = "class" })
+    end,
+    "Generate class documentation",
+  },
+  f = {
+    function()
+      require("neogen").generate({ type = "func" })
+    end,
+    "Generate function documentation",
+  },
 }
 
 lvim.builtin.which_key.mappings["lh"] = {
-  function() require("lsp_lines").toggle() end, "Toggle_lsp_lines"
+  function()
+    require("lsp_lines").toggle()
+  end,
+  "Toggle_lsp_lines",
+}
+
+lvim.builtin.which_key.mappings["e"] = nil
+lvim.builtin.which_key.mappings["e"] = {
+  ":lua MiniFiles.open()<cr>",
+  "Show explorer",
 }
 
 -- Remove the existing "ld" mapping if it exists
@@ -179,7 +283,6 @@ lvim.builtin.which_key.mappings["l"]["d"] = nil
 -- Add the new "ld" mapping
 lvim.builtin.which_key.mappings["l"]["d"] = { ":lua vim.diagnostic.setqflist()<CR>", "Show issues" }
 lvim.keys.normal_mode["<leader>ld"] = ":lua vim.diagnostic.setqflist()<CR>"
-
 
 lvim.builtin.which_key.mappings["o"] = {
   name = "Obsidian",

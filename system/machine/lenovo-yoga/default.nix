@@ -81,6 +81,17 @@
   services.tlp.enable = true;
   powerManagement.enable = true;
 
+  programs = {
+    # I guess this can't be installed using home-manager, at least not in a straight forward way.
+    # https://github.com/nix-community/home-manager/issues/4314
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; 
+      dedicatedServer.openFirewall = true; 
+      localNetworkGameTransfers.openFirewall = true;
+      gamescopeSession.enable = true;
+    };
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
