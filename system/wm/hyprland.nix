@@ -119,6 +119,8 @@
 
     immich = {
       enable = true;
+      openFirewall = true;
+      environment.HOST = lib.mkForce "0.0.0.0";
     };
 
     postgresql.package = pkgs.postgresql_16;
