@@ -1,5 +1,5 @@
 /*******************************************************************************
- * ROFI SQUARED THEME USING THE NORD PALETTE 
+ * ROFI SQUARED THEME USING CUSTOM NIGHTFOX CARBON PALETTE 
  * User                 : LR-Tech               
  * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
  *******************************************************************************/
@@ -25,6 +25,8 @@
 window {
     location:   center;
     width:      600;
+    border-color: #78A9FF;
+    border: 1;
 
     background-color:   @bg0;
 }

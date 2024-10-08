@@ -65,6 +65,7 @@ let
     # For use with my optmz python script.
     imagemagick # Image optimization
     ffmpeg # Video optimization
+    aider-chat # AI
 
     rofi-rbw-wayland # Rofi frontend for Bitwarden
     rbw # Bitwarden CLI (needed for rofi-rbw)

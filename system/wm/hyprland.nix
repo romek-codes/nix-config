@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   programs = {
@@ -139,7 +139,13 @@
     AttrKeyboardIntegration=internal
   '';
 
+  # Try sops-nix instead, more active repo
+  # age.secrets.groq = {
+  #   file = ../../secrets/groq.age;
+  # };
+
   environment.variables = {
     ROC_ENABLE_PRE_VEGA = "1"; 
+    # GROQ_API_KEY = config.age.secrets.groq.path;
   };
 }
