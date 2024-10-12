@@ -3,6 +3,11 @@ vim.opt.termguicolors = true
 vim.opt.conceallevel = 2
 vim.wo.relativenumber = true
 vim.diagnostic.config({ virtual_text = false })
+-- Line wrap settings
+vim.o.textwidth = 0
+vim.o.wrapmargin = 0
+vim.o.wrap = true
+vim.o.linebreak = true
 
 -- LunarVim Settings
 lvim.format_on_save.enabled = true

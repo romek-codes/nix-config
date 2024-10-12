@@ -66,6 +66,7 @@ let
     imagemagick # Image optimization
     ffmpeg # Video optimization
     aider-chat # AI
+    copyq # Clipboard history
 
     rofi-rbw-wayland # Rofi frontend for Bitwarden
     rbw # Bitwarden CLI (needed for rofi-rbw)
@@ -81,7 +82,7 @@ let
     waydroid # android emulator
   ] ++ fontPkgs ++ audioPkgs;
 
-  gblast = lib.exe pkgs.grimblast;
+  lib-grimblast = lib.exe pkgs.grimblast;
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
   scripts = pkgs.callPackage ./scripts.nix { };
@@ -173,8 +174,8 @@ in
       bindd=SUPER,P,Launch a program,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
       bindd=SUPER,TAB,Show open windows,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
       bindd=SUPER,C,Color picker,exec,${lib.exe pkgs.hyprpicker} --autocopy
-      bindd=SUPER,A,Screenshot area,exec,${gblast} save area
-      bindd=SUPER,S,Screenshot screen(s),exec,${gblast} save screen
+      bindd=SUPER,A,Screenshot area,exec,${lib-grimblast} copysave area
+      bindd=SUPER,S,Screenshot screen(s),exec,${lib-grimblast} copysave screen
       bindd=SUPERCTRL,L,Lock screen,exec,${lib.exe pkgs.hyprlock}
       # audio volume bindings
       binddel=,XF86AudioRaiseVolume,Raise volume 󰝝 ,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+
