@@ -67,6 +67,30 @@ in
   # restart services on change
   systemd.user.startServices = "sd-switch";
 
+  # copyq clipboard manager startup service
+  systemd.user.services.copyq = {
+    Unit = {
+      Description = "CopyQ, a clipboard manager";
+      Documentation = [ "man:copyq(5)" ];
+      Wants = [ "graphical-session.target" ];
+      Requires = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.copyq}/bin/copyq";
+      KillMode = "process";
+      KillSignal = "SIGINT";
+    };
+
+    Install = {
+      WantedBy = [
+        "graphical-session.target"
+      ];
+    };
+  };
+
   # notifications about home-manager news
   news.display = "silent";
 }
