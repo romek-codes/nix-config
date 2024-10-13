@@ -101,6 +101,7 @@ in
     ../../programs/hyprlock
     ../../programs/hyprpaper
     ../../programs/pyprland
+    ../../programs/copyq
     ../../programs/waybar
     ../../services/hypridle
     ../../programs/rofi
