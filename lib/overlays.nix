@@ -74,7 +74,7 @@ let
   xargsOverlay = f: p: {
     xargs = { hidpi }: {
       inherit hidpi;
-      inherit (inputs) gh-md-toc penguin-fox spicetify-nix;
+      inherit (inputs) gh-md-toc spicetify-nix;
       inherit (inputs.rycee-nurpkgs.lib.${system}) buildFirefoxXpiAddon;
       addons = f.nur.repos.rycee.firefox-addons;
     };

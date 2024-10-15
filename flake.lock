@@ -838,22 +838,6 @@
         "type": "github"
       }
     },
-    "penguin-fox": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1726840851,
-        "narHash": "sha256-4IpvjcXRDDKi2WpXGa6tlPx4zi/LratUs/33KG1Ycxg=",
-        "owner": "p3nguin-kun",
-        "repo": "penguinFox",
-        "rev": "ea3f6667cf89c55016914e7a5720948513f1093d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "p3nguin-kun",
-        "repo": "penguinFox",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -900,7 +884,6 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-mega": "nixpkgs-mega",
         "nurpkgs": "nurpkgs",
-        "penguin-fox": "penguin-fox",
         "rust-overlay": "rust-overlay",
         "rycee-nurpkgs": "rycee-nurpkgs",
         "sops-nix": "sops-nix",

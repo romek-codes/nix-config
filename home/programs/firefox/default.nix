@@ -1,7 +1,7 @@
 { pkgs, config, lib, specialArgs, ... }:
 
 let
-  inherit (specialArgs) addons penguin-fox;
+  inherit (specialArgs) addons;
 
   customAddons = pkgs.callPackage ./addons.nix {
     inherit lib;
@@ -175,6 +175,12 @@ let
     "toolkit.telemetry.shutdownPingSender.enabledFirstsession" = false;
     "browser.vpn_promo.enabled" = false;
   } // settings;
+  textfox = pkgs.fetchFromGitHub {
+    owner = "romek-codes";
+    repo = "textfox";
+    rev = "ba78f5a40b5759e4fb77d8a45d879f4bcb770ddf"; 
+    hash = "sha256-oFdfDF+yml/d1CdKATUVmNrUF+zmFrqtU4qhq0Fykw4="; 
+  };
 in
 {
   programs.firefox = {
@@ -188,23 +194,19 @@ in
         inherit extensions settings userChrome;
       };
 
-      chatroulette = {
-        id = 1;
-        inherit extensions settings userChrome;
-      };
-
-      demo = {
-        id = 2;
-        inherit extensions;
-        settings = demoSettings;
-        userChrome = lib.readFile "${penguin-fox}/files/chrome/userChrome.css";
-        userContent = lib.readFile "${penguin-fox}/files/chrome/userContent.css";
-      };
-
       sxm = {
         id = 3;
         inherit extensions settings userChrome;
       };
     };
+  };
+  # textfox
+  home.file = {
+    ".mozilla/firefox/default/chrome" = {
+      source = "${textfox}";
+      recursive = true;
+    };
+    # Move user.js to the parent directory
+    ".mozilla/firefox/default/user.js".source = "${textfox}/user.js";
   };
 }

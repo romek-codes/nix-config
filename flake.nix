@@ -71,12 +71,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Firefox style
-    penguin-fox = {
-      url = "github:p3nguin-kun/penguinFox";
-      flake = false;
-    };
-
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";

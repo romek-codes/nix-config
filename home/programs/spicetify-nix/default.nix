@@ -7,7 +7,21 @@ in
   programs.spicetify = {
     enable = true;
     # text, dribbblish, orchis 
-    theme = spicePkgs.themes.text;
+    # theme = spicePkgs.themes.text;
+    theme = 
+      {
+        src = "${pkgs.fetchFromGitHub {
+          owner = "romek-codes";
+          repo = "spicetify-themes";
+          rev = "708e31c05209496fd9d1f54de5e696f3f245db03";
+          hash = "sha256-ZjI+mss9cm0RxAE6lDX3VFeTbFg3IPUzryCCuTLZk+c=";
+        }}/text";
+        name = "text";
+        patches = {
+          "xpui.js_find_8008" = ",(\\w+=)56";
+          "xpui.js_repl_8008" = ",\${1}32";
+        };
+      };
     enabledExtensions = with spicePkgs.extensions; [
       keyboardShortcut
       adblock
@@ -20,7 +34,7 @@ in
           hash = "sha256-gtwhb8HYN/Xgv2DrYJ7JZYdE+v7L0x4DgvhIYeQLirE=";
         }}/fullAppDisplayModified";
         name = "fullAppDisplayMod.js";
-        })
+      })
     ];
     enabledCustomApps = with spicePkgs.apps; [
       # lyricsPlus
