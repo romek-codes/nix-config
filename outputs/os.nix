@@ -9,6 +9,7 @@ let
   sharedModules = [
     ../system/configuration.nix
     extraSystemConfig
+    inputs.sops-nix.nixosModules.sops
   ];
 in
 {

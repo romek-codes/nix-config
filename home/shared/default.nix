@@ -34,6 +34,7 @@ let
     vlc # media player
     xsel # clipboard support (also for neovim)
     lazygit # my preferred way of interacting with git (i'm lazy)
+    lazydocker # trying out, helpful when using laravel sail.
   ];
 in
 {

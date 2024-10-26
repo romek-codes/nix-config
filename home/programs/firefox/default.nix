@@ -200,13 +200,18 @@ in
       };
     };
   };
-  # textfox
-  home.file = {
-    ".mozilla/firefox/default/chrome" = {
-      source = "${textfox}";
-      recursive = true;
-    };
-    # Move user.js to the parent directory
-    ".mozilla/firefox/default/user.js".source = "${textfox}/user.js";
+  textfox = {
+      enable = true;
+      profile = "default";
   };
+
+  # textfox
+  # home.file = {
+  #   ".mozilla/firefox/default/chrome" = {
+  #     source = "${textfox}";
+  #     recursive = true;
+  #   };
+  #   # Move user.js to the parent directory
+  #   ".mozilla/firefox/default/user.js".source = "${textfox}/user.js";
+  # };
 }

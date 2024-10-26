@@ -107,6 +107,8 @@
       url = "github:gvolpe/hypr-binds";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    textfox.url = "github:romek-codes/textfox";
   };
 
   outputs = inputs:

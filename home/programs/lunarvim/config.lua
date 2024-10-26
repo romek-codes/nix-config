@@ -75,7 +75,6 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
   { name = "pint" },
   { name = "blade-formatter" },
-  { name = "tlint" },
   { name = "lua_format" },
   { name = "prettier" },
 })
