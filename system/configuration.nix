@@ -5,10 +5,9 @@
 { pkgs, inputs, ... }:
 
 let
-  customFonts = pkgs.nerdfonts.override {
+  customFonts = {
     fonts = [
-      "JetBrainsMono"
-      "Iosevka"
+     pkgs.nerd-fonts.jetbrains-mono
     ];
   };
 

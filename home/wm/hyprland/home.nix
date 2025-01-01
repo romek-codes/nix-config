@@ -4,12 +4,7 @@ let
   fontPkgs = with pkgs; [
     font-awesome # awesome fonts
     material-design-icons # fonts with glyphs
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "Iosevka"
-      ];
-    })
+    nerd-fonts.jetbrains-mono
   ];
 
   audioPkgs = with pkgs; [
@@ -67,6 +62,8 @@ let
     ffmpeg # Video optimization
     aider-chat # AI
     copyq # Clipboard history
+    godot_4 # Gamedev
+    linux-wallpaperengine # wallpaper engine for linux?
 
     rofi-rbw-wayland # Rofi frontend for Bitwarden
     rbw # Bitwarden CLI (needed for rofi-rbw)
@@ -151,12 +148,14 @@ in
 
     xdg.configFile."hypr/monitors.conf".text = ''
       # TODO: Figure out how to handle this automatically
-      monitor = DP-1,preferred,1080x0,1 # PC Main
       monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
+      monitor = DP-1,2560x1440@144.00Hz,1080x0,1 # Old PC Main
+      # monitor = desc:Acer Technologies X28,preferred,1080x0,1 # New PC Main
       monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1.25 # laptop-built in
       monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
       monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
       monitor = desc:Avolites Ltd HDTV,preferred,1920x0,1
+
 
       monitor=,preferred,auto,1
     '';
