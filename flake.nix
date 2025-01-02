@@ -37,13 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # neovim-flake = {
-      #url = git+file:///home/gvolpe/workspace/neovim-flake;
-      # url = github:gvolpe/neovim-flake;
-      # inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.flake-schemas.follows = "flake-schemas";
-    # };
-
     # Github Markdown ToC generator
 
     gh-md-toc = {
@@ -90,11 +83,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
-    # hyprsplit = {
-    #   url = "github:shezdy/hyprsplit?ref=v0.43.0";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
 
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";

@@ -5,12 +5,6 @@
 { pkgs, inputs, ... }:
 
 let
-  customFonts = {
-    fonts = [
-     pkgs.nerd-fonts.jetbrains-mono
-    ];
-  };
-
   myfonts = pkgs.callPackage fonts/default.nix { inherit pkgs; };
 in
 {
@@ -129,7 +123,9 @@ in
     # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [ pkgs.epson-escpr ];
+      drivers = [ 
+      # pkgs.epson-escpr
+      ];
     };
 
     logind.lidSwitch = "hibernate";
@@ -141,7 +137,7 @@ in
 
   # Making fonts accessible to applications.
   fonts.packages = with pkgs; [
-    customFonts
+    pkgs.nerd-fonts.jetbrains-mono
     font-awesome
     myfonts.flags-world-color
     myfonts.icomoon-feather
