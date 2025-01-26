@@ -39,6 +39,7 @@ in
   environment.systemPackages = with pkgs; [
     firejail
     nix-schema
+    lact
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

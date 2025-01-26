@@ -17,6 +17,8 @@
     TTYVTDisallocate = true;
   };
 
+  systemd.packages = with pkgs; [lact];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   hardware.bluetooth = {
     enable = true;
