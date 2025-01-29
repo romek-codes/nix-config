@@ -72,7 +72,8 @@ in
   ../programs/mimeo
   ../programs/mpv
   ../programs/neofetch
-  ../programs/lunarvim
+  # ../programs/lunarvim
+  ../programs/astronvim
   ../programs/ngrok
   ../programs/signal
   ../programs/yubikey

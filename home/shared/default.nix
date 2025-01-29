@@ -38,6 +38,7 @@ let
   ];
 in
 {
+
   programs.home-manager.enable = true;
 
   imports = lib.concatMap import [
@@ -59,7 +60,7 @@ in
     sessionVariables = {
       BROWSER = "${lib.exe pkgs.firefox-beta-bin}";
       DISPLAY = ":0";
-      EDITOR = "lvim";
+      EDITOR = "nvim";
       # https://github.com/NixOS/nixpkgs/issues/24311#issuecomment-980477051
       GIT_ASKPASS = "";
     };
