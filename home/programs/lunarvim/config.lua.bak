@@ -11,8 +11,37 @@ vim.o.linebreak = true
 
 -- LunarVim Settings
 lvim.format_on_save.enabled = true
+lvim.colorscheme = "carbonfox"
 -- lvim.builtin.nvimtree.setup.view.side = "right"
 lvim.builtin.nvimtree.active = false
+local dashboard = require("alpha.themes.dashboard")
+
+local romekCodes = {
+  [[                                __                             __                   ]],
+  [[                               /\ \                           /\ \                  ]],
+  [[ _ __   ___     ___ ___      __\ \ \/'\         ___    ___    \_\ \     __    ____  ]],
+  [[/\`'__\/ __`\ /' __` __`\  /'__`\ \ , <        /'___\ / __`\  /'_` \  /'__`\ /',__\ ]],
+  [[\ \ \//\ \L\ \/\ \/\ \/\ \/\  __/\ \ \\`\   __/\ \__//\ \L\ \/\ \L\ \/\  __//\__, `\]],
+  [[ \ \_\\ \____/\ \_\ \_\ \_\ \____\\ \_\ \_\/\_\ \____\ \____/\ \___,_\ \____\/\____/]],
+  [[  \/_/ \/___/  \/_/\/_/\/_/\/____/ \/_/\/_/\/_/\/____/\/___/  \/__,_ /\/____/\/___/ ]],
+}
+lvim.builtin.alpha.dashboard.section.header.val = romekCodes
+lvim.builtin.alpha.dashboard.section.header.opts = {
+  hl = "Normal",
+  position = "center",
+}
+lvim.builtin.alpha.dashboard.section.footer.val = {
+  ""
+}
+
+lvim.builtin.alpha.dashboard.section.buttons.val = {
+  dashboard.button("f", "Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
+  dashboard.button("r", "Recent", ":Telescope oldfiles<CR>"),
+}
+
+lvim.builtin.which_key.setup = {
+  preset = "helix",
+}
 
 -- Disable folding on alpha buffer
 vim.cmd([[
@@ -154,6 +183,14 @@ lvim.builtin.which_key.mappings["st"] = {
   "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args{}<CR>", "Text"
 }
 
+-- Nightfox and Highlight Colors Setup
+require("nightfox").setup({
+  palettes = {
+    carbonfox = {
+      bg1 = "#0C0C0C",
+    },
+  },
+})
 require("nvim-highlight-colors").setup({})
 require('mini.files').setup()
 

@@ -1,6 +1,9 @@
-{ pkgs, lib, inputs, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
   fontPkgs = with pkgs; [
     font-awesome # awesome fonts
     material-design-icons # fonts with glyphs
@@ -15,83 +18,91 @@ let
     pulsemixer # pulseaudio mixer
   ];
 
-  packages = with pkgs; [
-    brightnessctl # control laptop display brightness
-    nemo # file manager
-    loupe # image viewer
-    grim # screenshots
-    grimblast # screenshot program from hyprland
-    libnotify # notifications
-    nix-search # faster nix search client
-    wl-clipboard # clipboard support
-    xwaylandvideobridge # screensharing bridge
-    vesktop # Discord modded client with wayland support
-    calibre # Ebook management software
-    qdirstat # Storage management
-    obsidian # Notes with obsidian.nvim <3
-    onlyoffice-bin # Office stuff
-    thefuck # Funny and pretty useful cli utility
-    kdePackages.kdenlive # Video editor
-    kdePackages.breeze # Dark mode for kdenlive
-    solaar # Logitech device manager
-    cyme # lsusb and other utils
-    usb-modeswitch # turning devices off and on in cli
-    hyprpicker # color picker
-    wlsunset # screen color temp manager (like f.lux)
-    pass # for some password, like todoist.nvim api key
-    nwg-look # gtk3 settings
-    tldr # tldr manpages
-    peazip # for zip and rar files
-    amdvlk
-    wget
-    gcc
-    rustc
-    cargo
-    nil
-    unzip # some dev dep
-    gnumake
-    gcc
-    php # Laravel <3
-    php83Packages.composer
-    tailwindcss-language-server # Tailwind LSP
-    nodejs
-    dbeaver-bin # DBMS
-    croc # File transfer
-    # For use with my optmz python script.
-    imagemagick # Image optimization
-    ffmpeg # Video optimization
-    aider-chat # AI
-    copyq # Clipboard history
-    godot_4 # Gamedev
-    linux-wallpaperengine # wallpaper engine for linux?
+  packages = with pkgs;
+    [
+      brightnessctl # control laptop display brightness
+      nemo # file manager
+      loupe # image viewer
+      grim # screenshots
+      grimblast # screenshot program from hyprland
+      libnotify # notifications
+      nix-search # faster nix search client
+      wl-clipboard # clipboard support
+      xwaylandvideobridge # screensharing bridge
+      vesktop # Discord modded client with wayland support
+      calibre # Ebook management software
+      qdirstat # Storage management
+      obsidian # Notes with obsidian.nvim <3
+      onlyoffice-bin # Office stuff
+      thefuck # Funny and pretty useful cli utility
+      kdePackages.kdenlive # Video editor
+      kdePackages.breeze # Dark mode for kdenlive
+      solaar # Logitech device manager
+      cyme # lsusb and other utils
+      usb-modeswitch # turning devices off and on in cli
+      hyprpicker # color picker
+      wlsunset # screen color temp manager (like f.lux)
+      pass # for some password, like todoist.nvim api key
+      nwg-look # gtk3 settings
+      tldr # tldr manpages
+      peazip # for zip and rar files
+      amdvlk
+      wget
+      gcc
+      rustc
+      cargo
+      nil
+      unzip # some dev dep
+      gnumake
+      gcc
+      php # Laravel <3
+      php83Packages.composer
+      tailwindcss-language-server # Tailwind LSP
+      nodejs
+      dbeaver-bin # DBMS
+      croc # File transfer
+      # For use with my optmz python script.
+      imagemagick # Image optimization
+      ffmpeg # Video optimization
+      aider-chat # AI
+      copyq # Clipboard history
+      godot_4 # Gamedev
+      linux-wallpaperengine # wallpaper engine for linux?
 
-    rofi-rbw-wayland # Rofi frontend for Bitwarden
-    rbw # Bitwarden CLI (needed for rofi-rbw)
-    pinentry # Needed by rbw
+      rofi-rbw-wayland # Rofi frontend for Bitwarden
+      rbw # Bitwarden CLI (needed for rofi-rbw)
+      pinentry # Needed by rbw
 
-    # Games
-    (lutris.override {
-       extraPkgs = pkgs: [
-         fuse
-       ];
-    })
-    pcsx2
-    waydroid # android emulator
-  ] ++ fontPkgs ++ audioPkgs;
+      # Games
+      (lutris.override {
+        extraPkgs = pkgs: [
+          fuse
+        ];
+      })
+      pcsx2
+      waydroid # android emulator
+
+      # LSPs, linters etc.
+      statix
+      nixd
+      alejandra
+      deadnix
+      lua-language-server
+    ]
+    ++ fontPkgs
+    ++ audioPkgs;
 
   lib-grimblast = lib.exe pkgs.grimblast;
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
-  scripts = pkgs.callPackage ./scripts.nix { };
+  scripts = pkgs.callPackage ./scripts.nix {};
 
-  workspaceConf = { monitor }: ''
+  workspaceConf = {monitor}: ''
     workspace=1,on-created-empty:firefox-beta
     workspace=2,on-created-empty:footclient -e
     workspace=10,on-created-empty:footclient -e btm
   '';
-
-in
-{
+in {
   imports = [
     ../../shared
     ../../programs/foot
@@ -133,10 +144,10 @@ in
     enable = true;
     config = {
       common = {
-        default = [ "hyprland" ];
+        default = ["hyprland"];
       };
       hyprland = {
-        default = [ "gtk" "hyprland" ];
+        default = ["gtk" "hyprland"];
       };
     };
     extraPortals = with pkgs; [
@@ -146,19 +157,19 @@ in
     xdgOpenUsePortal = true;
   };
 
-    xdg.configFile."hypr/monitors.conf".text = ''
-      # TODO: Figure out how to handle this automatically
-      monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
-      monitor = DP-1,2560x1440@144.00Hz,1080x0,1 # Old PC Main
-      # monitor = desc:Acer Technologies X28,preferred,1080x0,1 # New PC Main
-      monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1.25 # laptop-built in
-      monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
-      monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
-      monitor = desc:Avolites Ltd HDTV,preferred,1920x0,1
+  xdg.configFile."hypr/monitors.conf".text = ''
+    # TODO: Figure out how to handle this automatically
+    monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
+    monitor = DP-1,2560x1440@144.00Hz,1080x0,1 # Old PC Main
+    # monitor = desc:Acer Technologies X28,preferred,1080x0,1 # New PC Main
+    monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1.25 # laptop-built in
+    monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
+    monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
+    monitor = desc:Avolites Ltd HDTV,preferred,1920x0,1
 
 
-      monitor=,preferred,auto,1
-    '';
+    monitor=,preferred,auto,1
+  '';
 
   programs.hypr-binds = {
     enable = true;
@@ -169,29 +180,31 @@ in
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
-    extraConfig = (builtins.readFile ./hyprland.conf) + ''
-      bindd=SUPER,F1,Show keybindings,exec,hypr-binds
-      bindd=SUPER,P,Launch a program,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
-      bindd=SUPER,TAB,Show open windows,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
-      bindd=SUPER,C,Color picker,exec,${lib.exe pkgs.hyprpicker} --autocopy
-      bindd=SUPER,A,Screenshot area,exec,${lib-grimblast} copysave area
-      bindd=SUPER,S,Screenshot screen(s),exec,${lib-grimblast} copysave screen
-      bindd=SUPERCTRL,L,Lock screen,exec,${lib.exe pkgs.hyprlock}
-      # audio volume bindings
-      binddel=,XF86AudioRaiseVolume,Raise volume 󰝝 ,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+
-      binddel=,XF86AudioLowerVolume,Lower volume 󰝞 ,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-
-      binddl=,XF86AudioMute,Toggle mute 󰝟 ,exec,${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle
+    extraConfig =
+      (builtins.readFile ./hyprland.conf)
+      + ''
+        bindd=SUPER,F1,Show keybindings,exec,hypr-binds
+        bindd=SUPER,P,Launch a program,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show run
+        bindd=SUPER,TAB,Show open windows,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
+        bindd=SUPER,C,Color picker,exec,${lib.exe pkgs.hyprpicker} --autocopy
+        bindd=SUPER,A,Screenshot area,exec,${lib-grimblast} copysave area
+        bindd=SUPER,S,Screenshot screen(s),exec,${lib-grimblast} copysave screen
+        bindd=SUPERCTRL,L,Lock screen,exec,${lib.exe pkgs.hyprlock}
+        # audio volume bindings
+        binddel=,XF86AudioRaiseVolume,Raise volume 󰝝 ,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+
+        binddel=,XF86AudioLowerVolume,Lower volume 󰝞 ,exec,${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-
+        binddl=,XF86AudioMute,Toggle mute 󰝟 ,exec,${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-      ${workspaceConf { monitor = "${scripts.extMonitor}"; }}
+        ${workspaceConf {monitor = "${scripts.extMonitor}";}}
 
-      exec-once=${lib.exe scripts.monitorInit}
-      exec-once=${lib.exe pkgs.hyprland-monitor-attached} ${lib.exe scripts.monitorAdded} ${lib.exe scripts.monitorRemoved}
-      exec-once=${lib.exe pkgs.hyprpaper}
-      exec-once=${pkgs.pyprland}/bin/pypr
-      exec-once=${pkgs.blueman}/bin/blueman-applet
-      exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --sm-disable --indicator
-      exec-once=${lib.exe pkgs.pasystray}
-    '';
+        exec-once=${lib.exe scripts.monitorInit}
+        exec-once=${lib.exe pkgs.hyprland-monitor-attached} ${lib.exe scripts.monitorAdded} ${lib.exe scripts.monitorRemoved}
+        exec-once=${lib.exe pkgs.hyprpaper}
+        exec-once=${pkgs.pyprland}/bin/pypr
+        exec-once=${pkgs.blueman}/bin/blueman-applet
+        exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --sm-disable --indicator
+        exec-once=${lib.exe pkgs.pasystray}
+      '';
     plugins = [
       # inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
       inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
@@ -199,7 +212,7 @@ in
     ];
     systemd = {
       enable = true;
-      variables = [ "--all" ];
+      variables = ["--all"];
     };
     xwayland.enable = true;
   };

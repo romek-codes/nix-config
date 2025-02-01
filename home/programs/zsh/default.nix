@@ -30,8 +30,8 @@
       pint = "./vendor/bin/pint";
       explorer = "explorer.exe .";
       open = "xdg-open";
-      v = "lvim .";
-      lv = "lvim .";
+      v = "nvim .";
+      nv = "nvim .";
       duh = "du -ha -d 1 | sort -hr";
     };
 

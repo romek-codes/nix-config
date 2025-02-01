@@ -1,5 +1,5 @@
 let
-  more = { pkgs, ... }: {
+  more = {pkgs, ...}: {
     programs = {
       bat.enable = true;
 
@@ -17,7 +17,7 @@ let
         enable = true;
         enableFishIntegration = false; # broken
         defaultCommand = "fd --type file --follow"; # FZF_DEFAULT_COMMAND
-        defaultOptions = [ "--height 20%" ]; # FZF_DEFAULT_OPTS
+        defaultOptions = ["--height 20%"]; # FZF_DEFAULT_OPTS
         fileWidgetCommand = "fd --type file --follow"; # FZF_CTRL_T_COMMAND
       };
 
@@ -42,13 +42,13 @@ let
           obs-vkcapture
         ];
         # plugins = [
-          # (pkgs.wrapOBS {
-          #   plugins = with pkgs.obs-studio-plugins; [
-          #     obs-backgroundremoval
-          #     obs-pipewire-audio-capture
-          #     obs-composite-blur
-          #   ];
-          # })
+        # (pkgs.wrapOBS {
+        #   plugins = with pkgs.obs-studio-plugins; [
+        #     obs-backgroundremoval
+        #     obs-pipewire-audio-capture
+        #     obs-composite-blur
+        #   ];
+        # })
         # ];
       };
 
@@ -56,13 +56,11 @@ let
 
       zoxide = {
         enable = true;
-        options = [ ];
+        options = [];
       };
-
     };
   };
-in
-[
+in [
   ../programs/dconf
   ../programs/git
   ../programs/firefox

@@ -3,7 +3,7 @@
 let
   gitConfig = {
     core = {
-      editor = "lvim";
+      editor = "nvim";
       pager = "diff-so-fancy | less --tabs=4 -RFX";
     };
     init.defaultBranch = "main";
@@ -14,7 +14,7 @@ let
     mergetool."vim_mergetool" = {
       #cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\"";
       # this command requires the vim-mergetool plugin
-      cmd = "lvim -f -c \"MergetoolStart\" \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"";
+      cmd = "nvim -f -c \"MergetoolStart\" \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"";
       prompt = false;
     };
     pull.rebase = false;

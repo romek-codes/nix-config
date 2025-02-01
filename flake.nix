@@ -50,13 +50,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nix linter
-
-    statix = {
-      url = "github:nerdypepper/statix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Miscelaneous
 
     cowsay = {
