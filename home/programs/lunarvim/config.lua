@@ -95,7 +95,6 @@ lvim.plugins = {
       require("lsp_lines").setup()
     end,
   },
-  { "EdenEast/nightfox.nvim" },
   {
     "danymat/neogen",
     config = true,
@@ -112,40 +111,6 @@ lvim.plugins = {
     ft = "markdown",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  {
-    "stevearc/oil.nvim",
-    opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("oil").setup()
-    end,
-  },
-  {
-    "MeanderingProgrammer/markdown.nvim",
-    main = "render-markdown",
-    opts = { bullet = { right_pad = 10 } },
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-  },
-  { "brenoprata10/nvim-highlight-colors" },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {},
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      -- "rcarriga/nvim-notify",
-    },
-  },
-  {
-    "MagicDuck/grug-far.nvim",
-    config = function()
-      require("grug-far").setup({})
-    end,
-  },
-  { 'echasnovski/mini.files', version = false },
-  {
-    "nvim-telescope/telescope-live-grep-args.nvim",
-  },
 }
 lvim.builtin.telescope.on_config_done = function(telescope)
   pcall(telescope.load_extension, "live-grep-args")
@@ -156,29 +121,6 @@ lvim.builtin.which_key.mappings["st"] = {
 
 require("nvim-highlight-colors").setup({})
 require('mini.files').setup()
-
--- Noice Configuration
-require("noice").setup({
-  lsp = {
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-    },
-  },
-  presets = {
-    bottom_search = true,
-    long_message_to_split = true,
-    inc_rename = false,
-    lsp_doc_border = false,
-  },
-  messages = {
-    view = "mini",
-    view_warn = "mini",
-    view_error = "mini",
-  },
-})
-
 
 -- Keybindings
 lvim.builtin.which_key.mappings["lp"] = {
