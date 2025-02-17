@@ -429,22 +429,6 @@
         "type": "github"
       }
     },
-    "gh-md-toc": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1728761459,
-        "narHash": "sha256-M9CzR3tmKAFDk6M1hX7l2P7+Eulkvcqv4TfYTJvFkVo=",
-        "owner": "ekalinin",
-        "repo": "github-markdown-toc",
-        "rev": "c386c7b41956158867d7b8b5c6620a2ce6fbe939",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ekalinin",
-        "repo": "github-markdown-toc",
-        "type": "github"
-      }
-    },
     "git-hooks": {
       "inputs": {
         "flake-compat": [
@@ -1264,7 +1248,6 @@
       "inputs": {
         "cowsay": "cowsay",
         "flake-schemas": "flake-schemas",
-        "gh-md-toc": "gh-md-toc",
         "home-manager": "home-manager",
         "hypr-binds-flake": "hypr-binds-flake",
         "hyprland": "hyprland",
