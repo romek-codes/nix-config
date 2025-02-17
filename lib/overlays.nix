@@ -1,8 +1,8 @@
-{ inputs, system }:
-
-with inputs;
-
-let
+{
+  inputs,
+  system,
+}:
+with inputs; let
   cowsayOverlay = f: p: {
     inherit (cowsay.packages.${system}) cowsay;
   };
@@ -20,18 +20,27 @@ let
   libVersionOverlay = import "${inputs.nixpkgs}/lib/flake-version-info.nix" inputs.nixpkgs;
 
   libOverlay = f: p: rec {
-    libx = import ./. { inherit (p) lib; };
-    lib = (p.lib.extend (_: _: {
-      inherit (libx) exe removeNewline secretManager;
-    })).extend libVersionOverlay;
+    libx = import ./. {inherit (p) lib;};
+    lib =
+      (p.lib.extend (_: _: {
+        inherit (libx) exe removeNewline secretManager;
+      }))
+      .extend
+      libVersionOverlay;
   };
 
   buildersOverlay = f: p: {
-    mkHomeConfigurations = { pkgs ? f, extraPkgs ? [ ] }:
-      import ../outputs/hm.nix { inherit extraPkgs inputs pkgs system; };
+    mkHomeConfigurations = {
+      pkgs ? f,
+      extraPkgs ? [],
+    }:
+      import ../outputs/hm.nix {inherit extraPkgs inputs pkgs system;};
 
-    mkNixosConfigurations = { pkgs ? f, extraSystemConfig ? { } }:
-      import ../outputs/os.nix { inherit extraSystemConfig inputs pkgs system; };
+    mkNixosConfigurations = {
+      pkgs ? f,
+      extraSystemConfig ? {},
+    }:
+      import ../outputs/os.nix {inherit extraSystemConfig inputs pkgs system;};
   };
 
   treesitterGrammarsOverlay = f: p: {
@@ -61,20 +70,23 @@ let
   };
 
   secretsOverlay = f: p: {
-    secrets = p.callPackage ./secrets.nix { };
+    secrets = p.callPackage ./secrets.nix {};
   };
 
   megasyncOverlay = f: p: {
-    inherit (import inputs.nixpkgs-mega {
-      inherit system;
-      config.allowUnfree = true;
-    }) megasync;
+    inherit
+      (import inputs.nixpkgs-mega {
+        inherit system;
+        config.allowUnfree = true;
+      })
+      megasync
+      ;
   };
 
   xargsOverlay = f: p: {
-    xargs = { hidpi }: {
+    xargs = {hidpi}: {
       inherit hidpi;
-      inherit (inputs) gh-md-toc spicetify-nix;
+      inherit (inputs) spicetify-nix;
       inherit (inputs.rycee-nurpkgs.lib.${system}) buildFirefoxXpiAddon;
       addons = f.nur.repos.rycee.firefox-addons;
     };
@@ -84,19 +96,15 @@ let
     nix-schema = inputs.nix-schema.packages.${system}.nix.overrideAttrs (old: {
       doCheck = false;
       doInstallCheck = false;
-      postInstall = old.postInstall + ''
-        rm $out/bin/nix-*
-        mv $out/bin/nix $out/bin/nix-schema
-      '';
+      postInstall =
+        old.postInstall
+        + ''
+          rm $out/bin/nix-*
+          mv $out/bin/nix $out/bin/nix-schema
+        '';
     });
   };
-
-  # spotifyOverlay = f: p: {
-  #     spotify = p.callPackage ../home/programs/spotify{};
-  #   };
-
-  in
-[
+in [
   cowsayOverlay
   libOverlay
   nixSearchOverlay
@@ -115,5 +123,4 @@ let
   buildersOverlay
   treesitterGrammarsOverlay
   schemaOverlay
-  # spotifyOverlay
 ]

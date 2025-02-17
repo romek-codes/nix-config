@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   username = "romek";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config";
@@ -9,7 +11,7 @@ let
     any-nix-shell # fish & zsh support for nix shell
     audacious # simple music player
     bazecor # configuration software for the dygma defy keyboard
-    bottom # alternative to htop & ytop
+    btop # alternative to htop & ytop
     dig # dns command-line tool
     docker-compose # docker manager
     duf # disk usage/free utility
@@ -36,9 +38,7 @@ let
     lazygit # my preferred way of interacting with git (i'm lazy)
     lazydocker # trying out, helpful when using laravel sail.
   ];
-in
-{
-
+in {
   programs.home-manager.enable = true;
 
   imports = lib.concatMap import [
@@ -73,10 +73,10 @@ in
   systemd.user.services.copyq = {
     Unit = {
       Description = "CopyQ, a clipboard manager";
-      Documentation = [ "man:copyq(5)" ];
-      Wants = [ "graphical-session.target" ];
-      Requires = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+      Documentation = ["man:copyq(5)"];
+      Wants = ["graphical-session.target"];
+      Requires = ["graphical-session.target"];
+      After = ["graphical-session.target"];
     };
 
     Service = {

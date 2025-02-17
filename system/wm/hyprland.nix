@@ -1,6 +1,9 @@
-{ pkgs, lib, config, ... }:
-
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   programs = {
     dconf.enable = true;
     hyprland.enable = true;
@@ -32,14 +35,14 @@
   # nice but buggy: https://github.com/rharish101/ReGreet/issues/45
   programs.regreet = {
     enable = false;
-    settings = (lib.importTOML ./regreet.toml) // {
-      background = {
-        path = ../imgs/hyprland.png;
+    settings =
+      (lib.importTOML ./regreet.toml)
+      // {
+        background = {
+          path = ../imgs/hyprland.png;
+        };
       };
-    };
   };
-
-
 
   services = {
     # Bluetooth manager
@@ -48,7 +51,7 @@
     # GTK theme config
     dbus = {
       enable = true;
-      packages = [ pkgs.dconf ];
+      packages = [pkgs.dconf];
     };
 
     # User's credentials manager
@@ -62,15 +65,13 @@
           command = "${lib.exe pkgs.cage} -s -- ${lib.exe pkgs.greetd.regreet}";
           user = "greeter";
         };
-        tuigreet_session =
-          let
-            session = "${pkgs.hyprland}/bin/Hyprland";
-            tuigreet = "${lib.exe pkgs.greetd.tuigreet}";
-          in
-          {
-            command = "${tuigreet} --time --remember --cmd ${session}";
-            user = "greeter";
-          };
+        tuigreet_session = let
+          session = "${pkgs.hyprland}/bin/Hyprland";
+          tuigreet = "${lib.exe pkgs.greetd.tuigreet}";
+        in {
+          command = "${tuigreet} --time --remember --cmd ${session}";
+          user = "greeter";
+        };
         default_session = tuigreet_session;
       };
     };
@@ -91,29 +92,29 @@
       enable = true;
       keyboards = {
         default = {
-          ids = [ "*" ]; 
+          ids = ["*"];
           settings = {
-          main = {
-            capslock = "layer(number)";
-          };
-          number = {
-            u = "1";
-            i = "2";
-            o = "3";
-            j = "4";
-            k = "5";
-            l = "6";
-            m = "7";
-            "," = "8";
-            "." = "9";
-            semicolon = "0";
-          };
-          arrows = {
-            h = "left";
-            j = "down";
-            k = "up";
-            l = "right";
-          };
+            main = {
+              capslock = "layer(number)";
+            };
+            number = {
+              u = "1";
+              i = "2";
+              o = "3";
+              j = "4";
+              k = "5";
+              l = "6";
+              m = "7";
+              "," = "8";
+              "." = "9";
+              semicolon = "0";
+            };
+            arrows = {
+              h = "left";
+              j = "down";
+              k = "up";
+              l = "right";
+            };
           };
         };
       };
@@ -129,10 +130,10 @@
     postgresql.package = pkgs.postgresql_16;
 
     syncthing = {
-        enable = true;
-        user = "romek";
-        dataDir = "/home/romek/Documents";    # Default folder for new synced folders
-        configDir = "/home/romek/Documents/.config/syncthing";   # Folder for Syncthing's settings and keys
+      enable = true;
+      user = "romek";
+      dataDir = "/home/romek/Documents"; # Default folder for new synced folders
+      configDir = "/home/romek/Documents/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
   };
 
@@ -150,7 +151,7 @@
   # };
 
   environment.variables = {
-    ROC_ENABLE_PRE_VEGA = "1"; 
+    ROC_ENABLE_PRE_VEGA = "1";
     # GROQ_API_KEY = config.age.secrets.groq.path;
   };
 }

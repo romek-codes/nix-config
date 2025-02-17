@@ -37,13 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Github Markdown ToC generator
-
-    gh-md-toc = {
-      url = "github:ekalinin/github-markdown-toc";
-      flake = false;
-    };
-
     # Fast nix search client
     nix-search = {
       url = "github:diamondburned/nix-search";
@@ -51,7 +44,6 @@
     };
 
     # Miscelaneous
-
     cowsay = {
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -92,39 +84,37 @@
     textfox.url = "github:romek-codes/textfox";
 
     nixvim = {
-        url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs:
-    let
-      system = "x86_64-linux";
+  outputs = inputs: let
+    system = "x86_64-linux";
 
-      overlays = import ./lib/overlays.nix { inherit inputs system; };
+    overlays = import ./lib/overlays.nix {inherit inputs system;};
 
-      pkgs = import inputs.nixpkgs {
-        inherit overlays system;
-        config.allowUnfree = true;
-      };
-    in
-    {
-      schemas =
-        inputs.flake-schemas.schemas //
-        import ./lib/schemas.nix { inherit (inputs) flake-schemas; };
-
-      homeConfigurations = pkgs.mkHomeConfigurations { };
-      nixosConfigurations = pkgs.mkNixosConfigurations { };
-
-      out = { inherit pkgs overlays; };
-
-      apps.${system}."nix" = {
-        type = "app";
-        program = "${pkgs.nix-schema}/bin/nix-schema";
-      };
-
-      packages.${system} = {
-        inherit (pkgs) bazecor metals metals-updater;
-      };
+    pkgs = import inputs.nixpkgs {
+      inherit overlays system;
+      config.allowUnfree = true;
     };
+  in {
+    schemas =
+      inputs.flake-schemas.schemas
+      // import ./lib/schemas.nix {inherit (inputs) flake-schemas;};
+
+    homeConfigurations = pkgs.mkHomeConfigurations {};
+    nixosConfigurations = pkgs.mkNixosConfigurations {};
+
+    out = {inherit pkgs overlays;};
+
+    apps.${system}."nix" = {
+      type = "app";
+      program = "${pkgs.nix-schema}/bin/nix-schema";
+    };
+
+    packages.${system} = {
+      inherit (pkgs) bazecor metals metals-updater;
+    };
+  };
 }

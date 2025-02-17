@@ -1,13 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, inputs, ... }:
-
-let
-  myfonts = pkgs.callPackage fonts/default.nix { inherit pkgs; };
-in
 {
+  pkgs,
+  inputs,
+  ...
+}: let
+  myfonts = pkgs.callPackage fonts/default.nix {inherit pkgs;};
+in {
   networking = {
     extraHosts = pkgs.sxm.hosts.extra or "";
 
@@ -53,7 +53,7 @@ in
   # List services that you want to enable:
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 3001 ];
+  networking.firewall.allowedTCPPorts = [3001];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -72,7 +72,7 @@ in
     };
   };
 
-  users.extraGroups.vboxusers.members = [ "romek" ];
+  users.extraGroups.vboxusers.members = ["romek"];
 
   security.rtkit.enable = true;
 
@@ -86,6 +86,16 @@ in
   };
 
   services = {
+    # For csfloat api
+    # postgresql = {
+    #   enable = true;
+    #   # ensureDatabases = ["mydatabase"];
+    #   authentication = pkgs.lib.mkOverride 10 ''
+    #     #type database  DBuser  auth-method
+    #     local all       all     trust
+    #   '';
+    # };
+
     # Network scanners
     avahi = {
       enable = true;
@@ -124,8 +134,8 @@ in
     # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [ 
-      # pkgs.epson-escpr
+      drivers = [
+        # pkgs.epson-escpr
       ];
     };
 
@@ -133,7 +143,6 @@ in
 
     # In nixos calibre wiki, it says this will be needed for detecting usb devices, but stuff works so idk.
     # udisks2.enable = true;
-
   };
 
   # Making fonts accessible to applications.
@@ -146,12 +155,11 @@ in
 
   programs.zsh.enable = true;
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.romek = {
     isNormalUser = true;
     # wheel for 'sudo', uucp for bazecor to access ttyAMC0 (keyboard firmware updates)
-    extraGroups = [ "docker" "networkmanager" "wheel" "scanner" "lp" "uucp" "video" "input" ];
+    extraGroups = ["docker" "networkmanager" "wheel" "scanner" "lp" "uucp" "video" "input"];
     shell = pkgs.zsh;
   };
 
@@ -188,9 +196,9 @@ in
       auto-optimise-store = true;
 
       # Required by Cachix to be used as non-root user
-      trusted-users = [ "root" "romek" ];
+      trusted-users = ["root" "romek"];
 
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       warn-dirty = false;
 
       # Binary caches

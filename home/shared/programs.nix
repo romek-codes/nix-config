@@ -23,14 +23,6 @@ let
 
       gpg.enable = true;
 
-      htop = {
-        enable = true;
-        settings = {
-          sort_direction = true;
-          sort_key = "PERCENT_CPU";
-        };
-      };
-
       jq.enable = true;
 
       obs-studio = {
@@ -65,17 +57,8 @@ in [
   ../programs/git
   ../programs/firefox
   ../programs/zsh
-  ../programs/khal
-  ../programs/md-toc
-  ../programs/mimeo
-  ../programs/mpv
   ../programs/neofetch
-  # ../programs/lunarvim
   ../programs/astronvim
-  ../programs/ngrok
-  ../programs/signal
-  ../programs/yubikey
-  ../programs/zathura
   ../programs/tmux
   more
 ]

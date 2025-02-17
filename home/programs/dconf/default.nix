@@ -1,9 +1,6 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
-{ lib, ... }:
-
-with lib.hm.gvariant;
-
-{
+{lib, ...}:
+with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/nautilus/icon-view" = {
       default-zoom-level = "standard";
@@ -22,7 +19,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/nautilus/window-state" = {
-      initial-size = mkTuple [ 500 400 ];
+      initial-size = mkTuple [500 400];
       maximized = false;
       sidebar-width = 200;
       start-with-sidebar = true;
@@ -39,12 +36,12 @@ with lib.hm.gvariant;
       sort-directories-first = true;
       sort-order = "ascending";
       type-format = "category";
-      window-size = mkTuple [ 100 100 ];
+      window-size = mkTuple [100 100];
     };
 
     "org/gtk/settings/file-chooser" = {
-      window-position = mkTuple [ (-1) (-1) ];
-      window-size = mkTuple [ 300 100 ];
+      window-position = mkTuple [(-1) (-1)];
+      window-size = mkTuple [300 100];
     };
   };
 }
