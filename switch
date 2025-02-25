@@ -34,15 +34,28 @@ rebuild_lenovo_vm() {
   nixos-rebuild build-vm --flake .#lenovo-yoga
 }
 
+rebuild_hyprland_work_hdmi() {
+  nix build .#homeConfigurations.hyprland-hdmi-work.activationPackage
+  activate_hm
+}
+
+rebuild_work() {
+  sudo nixos-rebuild switch --flake .#work
+}
+
 case $1 in
   "hpedp")
     rebuild_hyprland_edp;;
   "hphdmi")
     rebuild_hyprland_hdmi;;
+  "hpwork")
+    rebuild_hyprland_work_hdmi;;
   "lenovo")
     rebuild_lenovo;;
   "meshify")
     rebuild_meshify;;
+  "work")
+    rebuild_work;;
   "vm")
     rebuild_lenovo_vm;;
   *)

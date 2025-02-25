@@ -73,15 +73,6 @@
       rbw # Bitwarden CLI (needed for rofi-rbw)
       pinentry # Needed by rbw
 
-      # Games
-      (lutris.override {
-        extraPkgs = pkgs: [
-          fuse
-        ];
-      })
-      pcsx2
-      waydroid # android emulator
-
       # LSPs, linters etc.
       statix
       nixd

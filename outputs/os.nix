@@ -1,8 +1,11 @@
-{ extraSystemConfig, inputs, system, pkgs, ... }:
-
-with inputs;
-
-let
+{
+  extraSystemConfig,
+  inputs,
+  system,
+  pkgs,
+  ...
+}:
+with inputs; let
   inherit (nixpkgs.lib) nixosSystem;
   inherit (pkgs) lib;
 
@@ -11,18 +14,23 @@ let
     extraSystemConfig
     inputs.sops-nix.nixosModules.sops
   ];
-in
-{
+in {
   meshify-pc = nixosSystem {
     inherit lib pkgs system;
-    specialArgs = { inherit inputs; };
+    specialArgs = {inherit inputs;};
     modules = [../system/machine/meshify-pc] ++ sharedModules;
   };
 
   lenovo-yoga = nixosSystem {
     inherit lib pkgs system;
-    specialArgs = { inherit inputs; };
+    specialArgs = {inherit inputs;};
     modules = [../system/machine/lenovo-yoga] ++ sharedModules;
+  };
+
+  work = nixosSystem {
+    inherit lib pkgs system;
+    specialArgs = {inherit inputs;};
+    modules = [../system/machine/work] ++ sharedModules;
   };
 
   # FIXME: zfs-kernel-2.2.3-6.8.9 is marked as broken
