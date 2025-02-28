@@ -13,8 +13,8 @@ in
         src = "${pkgs.fetchFromGitHub {
           owner = "romek-codes";
           repo = "spicetify-themes";
-          rev = "708e31c05209496fd9d1f54de5e696f3f245db03";
-          hash = "sha256-ZjI+mss9cm0RxAE6lDX3VFeTbFg3IPUzryCCuTLZk+c=";
+          rev = "30822f460ff002a8bae5c45975c790cf351b5f40";
+          hash = "sha256-I4YnLKAKyi8dDOm+MFJnXhPXls9PQXzD/MtiWV/aYZ4=";
         }}/text";
         name = "text";
         patches = {

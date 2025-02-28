@@ -28,7 +28,7 @@
       libnotify # notifications
       nix-search # faster nix search client
       wl-clipboard # clipboard support
-      xwaylandvideobridge # screensharing bridge
+      kdePackages.xwaylandvideobridge # screensharing bridge
       vesktop # Discord modded client with wayland support
       calibre # Ebook management software
       qdirstat # Storage management
@@ -79,6 +79,7 @@
       alejandra
       deadnix
       lua-language-server
+      vscode
     ]
     ++ fontPkgs
     ++ audioPkgs;
@@ -149,15 +150,15 @@ in {
   };
 
   xdg.configFile."hypr/monitors.conf".text = ''
-    # TODO: Figure out how to handle this automatically
+    monitor=desc:AU Optronics 0xD291,1920x1200@60.03,0x0,1
+    monitor=desc:Acer Technologies X28 ##GTIYMxgwAAt+,2560x1440@144.0,1920x0,1
+
     monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
-    monitor = DP-1,2560x1440@144.00Hz,1080x0,1 # Old PC Main
-    # monitor = desc:Acer Technologies X28,preferred,1080x0,1 # New PC Main
+    # monitor = DP-1,2560x1440@144.00Hz,1080x0,1 # Old PC Main
     monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1.25 # laptop-built in
     monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
     monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
     monitor = desc:Avolites Ltd HDTV,preferred,1920x0,1
-
 
     monitor=,preferred,auto,1
   '';
