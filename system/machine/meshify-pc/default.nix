@@ -1,6 +1,9 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   imports = [
     # Hardware scan
     ./hardware-configuration.nix
@@ -13,36 +16,41 @@
     # Use the systemd-boot EFI boot loader.
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      # systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
     };
 
-    initrd.kernelModules = [ "amdgpu" ];
+    initrd.kernelModules = ["amdgpu"];
 
     # For obs virtual camera
     extraModulePackages = with config.boot.kernelPackages; [
-        v4l2loopback
+      v4l2loopback
     ];
 
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
 
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
   };
 
   networking = {
     hostName = "meshify-pc";
-  #  interfaces = {
-  #    eno1.useDHCP = true;
-  #    wlp1s0.useDHCP = true;
-  #  };
+    #  interfaces = {
+    #    eno1.useDHCP = true;
+    #    wlp1s0.useDHCP = true;
+    #  };
   };
 
   services.sysprof.enable = true;
 
   services.xserver = {
-    videoDrivers = [ "amdgpu" ];
-
+    videoDrivers = ["amdgpu"];
 
     xrandrHeads = [
       {
@@ -65,11 +73,26 @@
     ];
 
     resolutions = [
-      { x = 2048; y = 1152; }
-      { x = 1920; y = 1080; }
-      { x = 2560; y = 1440; }
-      { x = 3072; y = 1728; }
-      { x = 3840; y = 2160; }
+      {
+        x = 2048;
+        y = 1152;
+      }
+      {
+        x = 1920;
+        y = 1080;
+      }
+      {
+        x = 2560;
+        y = 1440;
+      }
+      {
+        x = 3072;
+        y = 1728;
+      }
+      {
+        x = 3840;
+        y = 2160;
+      }
     ];
   };
 
@@ -81,8 +104,8 @@
     # https://github.com/nix-community/home-manager/issues/4314
     steam = {
       enable = true;
-      remotePlay.openFirewall = true; 
-      dedicatedServer.openFirewall = true; 
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
       gamescopeSession.enable = true;
     };

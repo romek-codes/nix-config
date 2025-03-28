@@ -40,6 +40,9 @@ in {
     firejail
     nix-schema
     lact
+    # for lanzaboote (secure boot support)
+    # https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md
+    sbctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

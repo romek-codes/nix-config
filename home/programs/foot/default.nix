@@ -1,10 +1,14 @@
-{ pkgs, specialArgs, ... }:
-
-let
-  inherit (specialArgs) hidpi;
-  fontSize = if hidpi then "12" else "10";
-in
 {
+  pkgs,
+  specialArgs,
+  ...
+}: let
+  inherit (specialArgs) hidpi;
+  fontSize =
+    if hidpi
+    then "12"
+    else "10";
+in {
   # lightweight wayland terminal emulator
   programs.foot = {
     enable = true;
@@ -16,6 +20,7 @@ in
         pad = "0x0";
         dpi-aware = "yes";
         selection-target = "both";
+        gamma-correct-blending = "no";
       };
       colors = {
         # alpha = 0.5;
