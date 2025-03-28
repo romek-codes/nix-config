@@ -80,6 +80,8 @@
       deadnix
       lua-language-server
       vscode
+      gparted # partitions
+      gnome-disk-utility # mounting iso
     ]
     ++ fontPkgs
     ++ audioPkgs;
@@ -149,11 +151,30 @@ in {
     xdgOpenUsePortal = true;
   };
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "default-web-browser" = ["firefox.desktop"];
+      "text/html" = ["firefox.desktop"];
+      "x-scheme-handler/http" = ["firefox.desktop"];
+      "x-scheme-handler/https" = ["firefox.desktop"];
+      "x-scheme-handler/about" = ["firefox.desktop"];
+      "x-scheme-handler/unknown" = ["firefox.desktop"];
+    };
+  };
+
   xdg.configFile."hypr/monitors.conf".text = ''
     monitor=desc:AU Optronics 0xD291,1920x1200@60.03,0x0,1
-    monitor=desc:Acer Technologies X28 ##GTIYMxgwAAt+,2560x1440@144.0,1920x0,1
+    # When having horizontal monitor to the left
+    # monitor=desc:Acer Technologies X28 ##GTIYMxgwAAt+,2560x1440@144.0,1920x0,1
 
-    monitor = HDMI-A-1,1920x1080,0x43,1,transform,1 # Iiyama vertical
+    # When having vertical monitor to the left
+    monitor=desc:Acer Technologies X28 ##GTIYMxgwAAt+,2560x1440@144.0,1080x0,1.0
+
+    monitor=desc:Iiyama North America PL2288H 0x01010101,1920x1080@60.0,0x0,1.0
+    monitor=desc:Iiyama North America PL2288H 0x01010101,transform,1
+
+
     # monitor = DP-1,2560x1440@144.00Hz,1080x0,1 # Old PC Main
     monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1.25 # laptop-built in
     monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1

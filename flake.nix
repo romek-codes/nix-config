@@ -83,8 +83,8 @@
 
     textfox.url = "github:romek-codes/textfox";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

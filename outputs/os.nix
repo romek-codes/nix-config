@@ -13,6 +13,7 @@ with inputs; let
     ../system/configuration.nix
     extraSystemConfig
     inputs.sops-nix.nixosModules.sops
+    inputs.lanzaboote.nixosModules.lanzaboote
   ];
 in {
   meshify-pc = nixosSystem {

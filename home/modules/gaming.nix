@@ -11,6 +11,7 @@
       ];
     })
     pcsx2
+    rpcs3
     waydroid # android emulator
     linux-wallpaperengine # wallpaper engine for linux
     godot_4 # Gamedev

@@ -11,7 +11,7 @@
     any-nix-shell # fish & zsh support for nix shell
     audacious # simple music player
     bazecor # configuration software for the dygma defy keyboard
-    btop # alternative to htop & ytop
+    (btop.override {rocmSupport = true;}) # alternative to htop & ytop
     dig # dns command-line tool
     docker-compose # docker manager
     duf # disk usage/free utility
