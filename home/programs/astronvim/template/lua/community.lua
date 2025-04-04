@@ -19,6 +19,7 @@ return {
 
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.vue" },
+  { import = "astrocommunity.pack.typescript" },
   -- import/override with your plugins folder
   { import = "astrocommunity.pack.laravel" },
   -- Override phpactor with intelephense and php-cs-fixer with pint.
@@ -65,6 +66,7 @@ return {
     opts = {
       formatters_by_ft = {
         php = { "pint" },
+        javascript = { "prettierd" },
       },
     },
   },

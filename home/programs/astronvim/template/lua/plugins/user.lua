@@ -3,20 +3,37 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
 ---@type LazySpec
+-- Workspaces Configuration
+local Path = require("plenary.path")
+local workspacePaths = {
+  -- meshify
+  { name = "personal", path = "/mnt/hdd-1tb/notes/personal" },
+  { name = "work",     path = "/mnt/hdd-1tb/notes/work" },
+  -- lenovo-yoga
+  { name = "personal", path = "/home/romek/notes/personal" },
+  { name = "work",     path = "/home/romek/notes/work" }
+}
+local workspaces = {}
+for _, workspaceInfo in ipairs(workspacePaths) do
+  local workspacePath = workspaceInfo.path
+  if Path:new(workspacePath):exists() then
+    table.insert(workspaces, { name = workspaceInfo.name, path = workspacePath })
+  end
+end
+
 return {
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    opts = {
+      workspaces = workspaces,
+      ui = { enable = false },
+    },
+    lazy = false,
+    ft = "markdown",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 
-  -- == Examples of Adding Plugins ==
-
-  -- "andweeb/presence.nvim",
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   event = "BufRead",
-  --   config = function() require("lsp_signature").setup() end,
-  -- },
-
-  -- == Examples of Overriding Plugins ==
-
-  -- customize alpha options
   {
     "goolord/alpha-nvim",
     opts = function(_, opts)
@@ -36,6 +53,18 @@ return {
   },
 
   {
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  },
+  {
+    "danymat/neogen",
+    config = true,
+    version = "*",
+  },
+
+  {
     "romek-codes/bruno.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
     config = function()
@@ -49,10 +78,12 @@ return {
     end,
   },
 
+
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim",       enabled = false },
 
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
+  -- You can also easiy customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
@@ -141,7 +172,38 @@ return {
   },
   { "nvim-lua/plenary.nvim" },
   { "nvim-pack/nvim-spectre" },
-  { 'echasnovski/mini.files',                      version = false },
-  { "nvim-telescope/telescope-live-grep-args.nvim" },
-
+  { "echasnovski/mini.files",
+    config = function()
+      require("mini.files").setup()
+    end,
+  },
+  { "nvim-telescope/telescope-live-grep-args.nvim",
+  config = function ()
+    local telescope = require("telescope")
+    local lga_actions = require("telescope-live-grep-args.actions")
+    telescope.setup {
+      extensions = {
+        live_grep_args = {
+          auto_quoting = true, 
+          mappings = { 
+            i = {
+              ["<C-k>"] = lga_actions.quote_prompt(),
+              ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              -- freeze the current list and start a fuzzy search in the frozen list
+              ["<C-f>"] = lga_actions.to_fuzzy_refine,
+            },
+          },
+        }
+      }
+    }
+  end
+  },
+  {
+    "andymass/vim-matchup",
+    setup = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
 }
+
+

@@ -33,6 +33,7 @@
       v = "nvim .";
       nv = "nvim .";
       duh = "du -ha -d 1 | sort -hr";
+      grepall = "grep --color=always -irn --include=*.php \"$*\" ~/Workspace/*";
     };
 
 

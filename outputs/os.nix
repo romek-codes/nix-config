@@ -12,7 +12,7 @@ with inputs; let
   sharedModules = [
     ../system/configuration.nix
     extraSystemConfig
-    inputs.sops-nix.nixosModules.sops
+    # inputs.sops-nix.nixosModules.sops
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
 in {

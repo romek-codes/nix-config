@@ -74,8 +74,6 @@
       inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
     };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-
     hypr-binds-flake = {
       url = "github:gvolpe/hypr-binds";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -98,6 +96,8 @@
       inherit overlays system;
       config.allowUnfree = true;
     };
+
+    secrets = builtins.fromJSON (builtins.readFile ./home/secrets/secrets.json);
   in {
     schemas =
       inputs.flake-schemas.schemas
