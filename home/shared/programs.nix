@@ -54,6 +54,8 @@ let
   };
 in [
   ../programs/dconf
+  ../programs/photogimp
+  ../programs/btop
   ../programs/git
   ../programs/firefox
   ../programs/zsh

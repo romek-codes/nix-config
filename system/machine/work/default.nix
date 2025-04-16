@@ -14,7 +14,6 @@
       systemd-boot.enable = true;
     };
 
-    initrd.kernelModules = ["amdgpu"];
   };
 
   networking = {
@@ -44,7 +43,6 @@
   services.sysprof.enable = true;
 
   services.xserver = {
-    videoDrivers = ["amdgpu"];
 
     xrandrHeads = [
       {

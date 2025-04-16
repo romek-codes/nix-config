@@ -67,11 +67,11 @@
       "browser.search.region" = "PL";
       "browser.search.widget.inNavBar" = true;
 
-      "browser.shell.checkDefaultBrowser" = false;
-      "browser.startup.homepage" = "about:robots";
-      "browser.tabs.loadInBackground" = true;
-      "browser.urlbar.placeholderName" = "DuckDuckGo";
-      "browser.urlbar.showSearchSuggestionsFirst" = false;
+    "browser.shell.checkDefaultBrowser" = false;
+    "browser.startup.homepage" = "localhost:2048";
+    "browser.tabs.loadInBackground" = true;
+    "browser.urlbar.placeholderName" = "DuckDuckGo";
+    "browser.urlbar.showSearchSuggestionsFirst" = false;
 
       # disable all the annoying quick actions
       "browser.urlbar.quickactions.enabled" = false;

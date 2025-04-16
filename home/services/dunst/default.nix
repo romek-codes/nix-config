@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   colors = import ../../themes/colors.nix;
-in
-{
+in {
   services.dunst = {
     enable = true;
     iconTheme = {
@@ -13,13 +10,16 @@ in
     };
     settings = with colors.scheme.helios; {
       global = {
+        dmenu = "${pkgs.rofi-wayland}/bin/rofi -dmenu -p dunst";
+        follow = "mouse";
         monitor = 0;
         geometry = "600x50-50+65";
         shrink = "yes";
         transparency = 10;
         padding = 16;
         horizontal_padding = 16;
-        frame_width = 3;
+        frame_width = 1;
+        separator_width = 0;
         frame_color = "${base00}";
         separator_color = "frame";
         font = "JetBrainsMono Nerd Font 10";

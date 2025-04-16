@@ -1,16 +1,17 @@
 {
   # More schemes at: https://github.com/atpotts/base16-nix/blob/master/schemes.json
   scheme = {
+    # TODO RJ: Use this instead of hardcoding own theme everywhere
     # https://github.com/reyemxela/base16-helios-scheme
     helios = {
       scheme = "Helios";
       author = "Alex Meyer (https://github.com/reyemxela)";
-      base00 = "1d2021"; # ----
+      base00 = "0C0C0C"; # ----
       base01 = "383c3e"; # ---
       base02 = "53585b"; # --
       base03 = "6f7579"; # -
       base04 = "cdcdcd"; # +
-      base05 = "d5d5d5"; # ++
+      base05 = "F2F4F8"; # ++
       base06 = "dddddd"; # +++
       base07 = "e5e5e5"; # ++++
       base08 = "d72638"; # red

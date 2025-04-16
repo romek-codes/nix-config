@@ -106,6 +106,7 @@ in {
     ../../programs/copyq
     ../../programs/waybar
     ../../services/hypridle
+    ../../services/glance
     ../../programs/rofi
     ../../programs/spicetify-nix
   ];
@@ -164,6 +165,7 @@ in {
   };
 
   xdg.configFile."hypr/monitors.conf".text = ''
+    # meeting raum why tf is the tv horizontal? 
     monitor=desc:AU Optronics 0xD291,1920x1200@60.03,0x0,1
     # When having horizontal monitor to the left
     # monitor=desc:Acer Technologies X28 ##GTIYMxgwAAt+,2560x1440@144.0,1920x0,1
