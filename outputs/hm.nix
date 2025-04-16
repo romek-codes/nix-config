@@ -22,6 +22,7 @@ with inputs; let
   mkHyprlandHome = {
     hidpi,
     withGaming ? true,
+    isWork ? false,
   }: let
     gameImports =
       if withGaming
@@ -38,7 +39,7 @@ with inputs; let
   in (
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      extraSpecialArgs = (pkgs.xargs {inherit hidpi;}) // {inherit inputs;};
+      extraSpecialArgs = (pkgs.xargs {inherit hidpi;}) // {inherit inputs isWork;};
       modules = [{inherit imports;}];
     }
   );
@@ -52,5 +53,6 @@ in {
   hyprland-hdmi-work = mkHyprlandHome {
     hidpi = true;
     withGaming = false;
+    isWork = true;
   };
 }

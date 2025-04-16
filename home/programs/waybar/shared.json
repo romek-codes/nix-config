@@ -41,6 +41,16 @@
       "18": "18",
       "19": "19",
       "20": "20",
+      "21": "21",
+      "22": "22",
+      "23": "23",
+      "24": "24",
+      "25": "25",
+      "26": "26",
+      "27": "27",
+      "28": "28",
+      "29": "29",
+      "30": "30",
       "urgent": "",
       "focused": "",
       "default": ""
@@ -84,7 +94,10 @@
     "format-muted": "󰝟",
     "format-icons": {
       "headphones": "",
-      "default": ["", ""]
+      "default": [
+        "",
+        ""
+      ]
     },
     "scroll-step": 5,
     "on-click": "pulsemixer",
@@ -105,7 +118,13 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "disk": {
     "interval": 5,
@@ -118,7 +137,9 @@
   },
   "custom/spotify": {
     "format": "{icon}",
-    "format-icons": ["󰓇 "]
+    "format-icons": [
+      "󰓇 "
+    ]
   },
   "custom/mpris": {
     "format": "{}",

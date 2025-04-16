@@ -18,11 +18,27 @@
   };
 
   networking = {
-    hostName = "lenovo-yoga";
-    #  interfaces = {
-    #    eno1.useDHCP = true;
-    #    wlp1s0.useDHCP = true;
-    #  };
+    hostName = "work";
+    extraHosts = ''
+      127.0.0.1 local.apps.sx-oz.de
+      ::1 local.apps.sx-oz.de localhost
+    '';
+  };
+
+  networking = {
+    # Enables wireless support and openvpn via network manager.
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openvpn
+        networkmanager-openconnect
+      ];
+    };
+
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
   };
 
   services.sysprof.enable = true;
