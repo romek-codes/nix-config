@@ -128,6 +128,9 @@ return {
         ["<Leader>o"] = { desc = "Obsidian" },
         ["<Leader>n"] = { desc = "Noice" },
         ["<Leader>B"] = { desc = "Bruno" },
+
+        -- DB
+        ["<Leader>db"] = { "<cmd>DBUIToggle<cr>", desc = "Show DB UI" },
       },
     },
   },

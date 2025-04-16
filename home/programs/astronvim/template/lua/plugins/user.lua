@@ -65,14 +65,14 @@ return {
   },
 
   {
+    -- dir = "~/Workspace/bruno.nvim",
     "romek-codes/bruno.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
     config = function()
       require("bruno").setup({
         collection_paths = {
           { name = "Nix",      path = "~/Bruno" },
-          -- { name = "Windows-work", path = "/mnt/c/Users/Roman/Documents/Bruno" },
-          { name = "Nix-work", path = "~/notes/work/Bruno" },
+          { name = "Nix-work", path = "/home/romek/notes/work/Bruno" },
         },
       })
     end,
@@ -172,31 +172,33 @@ return {
   },
   { "nvim-lua/plenary.nvim" },
   { "nvim-pack/nvim-spectre" },
-  { "echasnovski/mini.files",
+  {
+    "echasnovski/mini.files",
     config = function()
       require("mini.files").setup()
     end,
   },
-  { "nvim-telescope/telescope-live-grep-args.nvim",
-  config = function ()
-    local telescope = require("telescope")
-    local lga_actions = require("telescope-live-grep-args.actions")
-    telescope.setup {
-      extensions = {
-        live_grep_args = {
-          auto_quoting = true, 
-          mappings = { 
-            i = {
-              ["<C-k>"] = lga_actions.quote_prompt(),
-              ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-              -- freeze the current list and start a fuzzy search in the frozen list
-              ["<C-f>"] = lga_actions.to_fuzzy_refine,
+  {
+    "nvim-telescope/telescope-live-grep-args.nvim",
+    config = function()
+      local telescope = require("telescope")
+      local lga_actions = require("telescope-live-grep-args.actions")
+      telescope.setup {
+        extensions = {
+          live_grep_args = {
+            auto_quoting = true,
+            mappings = {
+              i = {
+                ["<C-k>"] = lga_actions.quote_prompt(),
+                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                -- freeze the current list and start a fuzzy search in the frozen list
+                ["<C-f>"] = lga_actions.to_fuzzy_refine,
+              },
             },
-          },
+          }
         }
       }
-    }
-  end
+    end
   },
   {
     "andymass/vim-matchup",
@@ -204,6 +206,37 @@ return {
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
   },
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      { 'tpope/vim-dadbod', lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql', 'mariadb' }, lazy = true }, -- Optional
+    },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
+  -- { -- optional saghen/blink.cmp completion source
+  --   'saghen/blink.cmp',
+  --   version = '0.14.*',
+  --   opts = {
+  --     sources = {
+  --       default = { "lsp", "path", "snippets", "buffer" },
+  --       per_filetype = {
+  --         sql = { 'snippets', 'dadbod', 'buffer' },
+  --       },
+  --       -- add vim-dadbod-completion to your completion providers
+  --       providers = {
+  --         dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+  --       },
+  --     },
+  --   },
+  -- }
 }
-
-

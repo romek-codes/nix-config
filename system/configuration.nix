@@ -221,4 +221,9 @@ in {
       keep-derivations = true;
     };
   };
+
+  # imports = [ <sops-nix/modules/sops> ];
+  imports = [];
+  sops.defaultSopsFile = ./secrets/test.yaml;
+
 }

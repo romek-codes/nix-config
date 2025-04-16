@@ -1,7 +1,7 @@
 self: super:
 
 let
-  version = "2.3.8";
+  version = "2.4.5";
 in
 {
   pyprland = super.pyprland.overrideAttrs (old: {

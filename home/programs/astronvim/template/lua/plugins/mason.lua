@@ -7,7 +7,7 @@ return {
   -- use mason-lspconfig to configure LSP installations
   {
     "williamboman/mason-lspconfig.nvim",
-    optional = true,
+    optional = false,
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = function(_, opts)
       -- Filter out lua_ls from ensure_installed if it exists

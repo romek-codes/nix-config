@@ -60,6 +60,8 @@
       tailwindcss-language-server # Tailwind LSP
       nodejs
       dbeaver-bin # DBMS
+      dbgate # DBMS
+      mariadb_114
       croc # File transfer
       # For use with my optmz python script.
       imagemagick # Image optimization
@@ -155,20 +157,23 @@ in {
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "default-web-browser" = ["firefox.desktop"];
-      "text/html" = ["firefox.desktop"];
-      "x-scheme-handler/http" = ["firefox.desktop"];
-      "x-scheme-handler/https" = ["firefox.desktop"];
-      "x-scheme-handler/about" = ["firefox.desktop"];
-      "x-scheme-handler/unknown" = ["firefox.desktop"];
+      "default-web-browser" = ["firefox-beta.desktop"];
+      "text/html" = ["firefox-beta.desktop"];
+      "x-scheme-handler/http" = ["firefox-beta.desktop"];
+      "x-scheme-handler/https" = ["firefox-beta.desktop"];
+      "x-scheme-handler/about" = ["firefox-beta.desktop"];
+      "x-scheme-handler/unknown" = ["firefox-beta.desktop"];
     };
   };
 
   xdg.configFile."hypr/monitors.conf".text = ''
-    # meeting raum why tf is the tv horizontal? 
-    monitor=desc:AU Optronics 0xD291,1920x1200@60.03,0x0,1
+    monitor=desc:AU Optronics 0xD291,1920x1200@60.03,0x0,1 # work laptop internal
+    monitor=desc:Samsung Electric Company SAMSUNG 0x01000601,1920x1200@60.03,0x0,1 # meeting room tv
+        
     # When having horizontal monitor to the left
     # monitor=desc:Acer Technologies X28 ##GTIYMxgwAAt+,2560x1440@144.0,1920x0,1
+    monitor=desc:Ancor Communications Inc VS248 EALMQS050867,1920x1080@60.00000,3840x0,1
+    monitor=desc:Ancor Communications Inc VS248 H8LMQS119474,1920x1080@60.00000,1920x0,1
 
     # When having vertical monitor to the left
     monitor=desc:Acer Technologies X28 ##GTIYMxgwAAt+,2560x1440@144.0,1080x0,1.0
@@ -213,7 +218,6 @@ in {
         ${workspaceConf {monitor = "${scripts.extMonitor}";}}
 
         exec-once=${lib.exe scripts.monitorInit}
-        exec-once=${lib.exe pkgs.hyprland-monitor-attached} ${lib.exe scripts.monitorAdded} ${lib.exe scripts.monitorRemoved}
         exec-once=${lib.exe pkgs.hyprpaper}
         exec-once=${pkgs.pyprland}/bin/pypr
         exec-once=${pkgs.blueman}/bin/blueman-applet

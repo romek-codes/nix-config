@@ -35,19 +35,19 @@ return {
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    optional = true,
+    optional = false,
     opts = function(_, opts)
       -- Remove php-cs-fixer by filtering
       opts.ensure_installed = vim.tbl_filter(function(item) 
         return item ~= "php-cs-fixer" 
       end, opts.ensure_installed)
       -- Add pint
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "pint" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "pint", "sleek" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    optional = true,
+    optional = false,
     opts = function(_, opts)
       -- Remove phpactor and php-cs-fixer by filtering
       opts.ensure_installed = vim.tbl_filter(function(item) 
@@ -56,18 +56,24 @@ return {
       -- Add intelephense and pint
       opts.ensure_installed = require("astrocore").list_insert_unique(
         opts.ensure_installed,
-        { "intelephense", "php-debug-adapter", "pint" }
+        { "intelephense", "php-debug-adapter", "pint", "sleek" }
       )
     end,
   },
   {
     "stevearc/conform.nvim",
-    optional = true,
+    optional = false,
     opts = {
       formatters_by_ft = {
         php = { "pint" },
+        mysql = { "sleek" },
         javascript = { "prettierd" },
       },
+      format_on_save = {
+          enabled = true,
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
     },
   },
 }
