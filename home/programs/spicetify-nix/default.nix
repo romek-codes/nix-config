@@ -16,7 +16,7 @@ in {
         owner = "romek-codes";
         repo = "spicetify-themes";
         rev = "efccd548365976fc51e71846e79f0442e9c9b372";
-        hash = "sha256-I4YnLKAKyi8dDOm+MFJnXhPXls9PQXzD/MtiWV/aYZ4=";
+        hash = "sha256-4EpvG+Q1HOS41mIB3kKrVw+MzvhASziebfb/WtsUPPc=";
       }}/text";
       name = "text";
       patches = {

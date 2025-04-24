@@ -14,6 +14,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     flake-schemas.url = "github:DeterminateSystems/flake-schemas";
 
     # https://github.com/NixOS/nixpkgs/commit/c3160517fc6381f86776795e95c97b8ef7b5d2e4
@@ -95,8 +96,17 @@
     overlays = import ./lib/overlays.nix {inherit inputs system;};
 
     pkgs = import inputs.nixpkgs {
-      inherit overlays system;
+      inherit system;
       config.allowUnfree = true;
+      overlays = overlays ++ [
+        (final: prev: {
+          # Pull rpcs3 specifically from master
+          rpcs3 = (import inputs.nixpkgs-master {
+            inherit system;
+            config.allowUnfree = true;
+          }).rpcs3;
+        })
+      ];
     };
 
     secrets = builtins.fromJSON (builtins.readFile ./home/secrets/secrets.json);
@@ -116,7 +126,7 @@
     };
 
     packages.${system} = {
-      inherit (pkgs) bazecor metals metals-updater;
+      inherit pkgs;
     };
   };
 }
