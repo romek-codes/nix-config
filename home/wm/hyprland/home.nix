@@ -70,6 +70,7 @@
       copyq # Clipboard history
       godot_4 # Gamedev
       linux-wallpaperengine # wallpaper engine for linux?
+      aider-chat
 
       rofi-rbw-wayland # Rofi frontend for Bitwarden
       rbw # Bitwarden CLI (needed for rofi-rbw)
@@ -208,6 +209,7 @@ in {
         bindd=SUPER,TAB,Show open windows,exec,${lib.exe pkgs.rofi-wayland} -modes run,window -show window
         bindd=SUPER,C,Color picker,exec,${lib.exe pkgs.hyprpicker} --autocopy
         bindd=SUPER,A,Screenshot area,exec,${lib-grimblast} copysave area
+        bindd=SUPER,Z,Rofi calc,exec,rofi -show calc -modi calc -no-show-match -no-sort
         bindd=SUPER,S,Screenshot screen(s),exec,${lib-grimblast} copysave screen
         bindd=SUPERCTRL,L,Lock screen,exec,${lib.exe pkgs.hyprlock}
         # audio volume bindings

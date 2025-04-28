@@ -3,7 +3,8 @@
 {
   programs.rofi= {
     enable = true;
-    # plugins = with pkgs; [ rofi-calc rofi-emoji ];
+    # calc is short for calculator
+    plugins = with pkgs; [ rofi-calc  ]; # rofi-emoji
     # terminal = "${pkgs.alacritty}/bin/alacritty";
     theme = ./theme.rafi;
     package = pkgs.rofi-wayland;
