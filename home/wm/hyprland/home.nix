@@ -185,6 +185,8 @@ in {
 
     # monitor = DP-1,2560x1440@144.00Hz,1080x0,1 # Old PC Main
     monitor = desc:California Institute of Technology 0x1402,1920x1200@90.00Hz,0x0,1.25 # laptop-built in
+    monitor = desc:Lenovo Group Limited 0x8A90,1920x1200@60.00Hz,0x0,1.25 # laptop-built in, it changed description??? it was the above before, idk wth happened
+
     monitor = desc:CTV CTV 0x00000001,preferred,1920x0,1
     monitor = desc:Samsung Electric Company SAMSUNG 0x00000001,preferred,1920x0,1
     monitor = desc:Avolites Ltd HDTV,preferred,1920x0,1
