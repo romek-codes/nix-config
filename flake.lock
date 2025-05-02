@@ -1427,15 +1427,15 @@
         "nur": "nur"
       },
       "locked": {
-        "lastModified": 1736378055,
-        "narHash": "sha256-twtTxdcWdcSc+bVaulZdWAv+vk5EkqUzH80PhTAJryk=",
-        "owner": "romek-codes",
+        "lastModified": 1743259489,
+        "narHash": "sha256-xDWkq97E63R3vVTqwgQE8fZi1nFE2Jl/44RZocs561M=",
+        "owner": "adriankarlen",
         "repo": "textfox",
-        "rev": "bf3c73613802702abd0a84d11fe875f821c0e64a",
+        "rev": "f60e1f432b812b2edc00d277fdbada66f1b42a0d",
         "type": "github"
       },
       "original": {
-        "owner": "romek-codes",
+        "owner": "adriankarlen",
         "repo": "textfox",
         "type": "github"
       }

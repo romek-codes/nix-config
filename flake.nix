@@ -80,7 +80,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    textfox.url = "github:romek-codes/textfox";
+    # textfox.url = "github:romek-codes/textfox";
+    textfox.url = "github:adriankarlen/textfox";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";

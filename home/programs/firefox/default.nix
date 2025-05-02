@@ -183,14 +183,7 @@
       "toolkit.telemetry.reportingpolicy.firstRun" = false;
       "toolkit.telemetry.shutdownPingSender.enabledFirstsession" = false;
       "browser.vpn_promo.enabled" = false;
-    }
-    // settings;
-  textfox = pkgs.fetchFromGitHub {
-    owner = "romek-codes";
-    repo = "textfox";
-    rev = "ba78f5a40b5759e4fb77d8a45d879f4bcb770ddf";
-    hash = "sha256-oFdfDF+yml/d1CdKATUVmNrUF+zmFrqtU4qhq0Fykw4=";
-  };
+    };
 in {
   # For webdev & testing
   programs.chromium.enable = true;
@@ -212,18 +205,34 @@ in {
       };
     };
   };
+
+
   textfox = {
-    enable = true;
-    profile = "default";
+      enable = true;
+      profile = "default";
+      config = {
+        background = {
+          color = "#0C0C0C";
+        };
+        border = {
+          color = "#0C0C0C";
+          width = "2px";
+          transition = "0.2s ease";
+          radius = "0px";
+        };
+        displayWindowControls = false;
+        displayNavButtons = true;
+        displayUrlbarIcons = true;
+        displaySidebarTools = true;
+        displayTitles = true;
+        newtabLogo = "romek.codes";
+        font = { 
+          family = "SF Mono";
+          size = "14px";
+          accent = "#f2f4f8";
+        };
+        tabs.vertical.margin = "0.5rem";
+      };
   };
 
-  # textfox
-  # home.file = {
-  #   ".mozilla/firefox/default/chrome" = {
-  #     source = "${textfox}";
-  #     recursive = true;
-  #   };
-  #   # Move user.js to the parent directory
-  #   ".mozilla/firefox/default/user.js".source = "${textfox}/user.js";
-  # };
 }
